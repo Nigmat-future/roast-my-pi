@@ -229,30 +229,30 @@ skill_view(name='advisor-insight')
 
 # 🇬🇧 English
 
-## 🚨 Red Flag Checklist: 6 Ways to Spot an Inflated Advisor
+## 🚨 Red Flags: 6 Ways to Tell an Advisor Is Inflated
 
-> Each one is screenshot-worthy. After reading, you'll never be fooled by a CV again.
+> Save these. Screenshot them. You'll never look at a CV the same way again.
 
-### 1. Author position > journal impact factor
+### 1. Author position beats journal impact factor
 
 First author on Nature ≠ author **#28** on Nature.
 
-Author position reveals real contribution. **Position 20+** usually means sample contribution, not research capability. Count **first/corresponding-author** papers.
+Where you sit on the author list says everything about what you actually did. **Position 20+** usually means you handed over some samples — that's it. What matters is the count of **first-author and corresponding-author** papers.
 
-| Same Nature paper | Real value |
+| Same Nature paper | What it actually means |
 |:---|:---|
-| 1st author / corresponding | ⭐⭐⭐⭐⭐ Real capability |
-| 3rd-5th author | ⭐⭐⭐ Contributed |
-| 20+ author | ⭐ Provided samples |
+| 1st author / corresponding | ⭐⭐⭐⭐⭐ They drove the work |
+| 3rd–5th author | ⭐⭐⭐ Meaningful contribution |
+| 20+ author | ⭐ Sent in some samples |
 
-### 2. Independence ratio < 0.15 = team dependent
+### 2. Independence ratio below 0.15? They're not a PI.
 
-Score every paper by author role:
+Score every paper by the author's role:
 
 | Role | Weight |
 |:---|:---|
 | First author | +1.0 |
-| Corresponding (last + marker) | +1.0 |
+| Corresponding (last + marked) | +1.0 |
 | Co-first | +0.7 |
 | Co-corresponding | +0.5 |
 | Middle author | +0 |
@@ -261,77 +261,77 @@ Score every paper by author role:
 Independence ratio = weighted score / total papers
 ```
 
-**Thresholds:**
-- `> 0.30` → Credible independent researcher
-- `0.15 - 0.30` → Developing independence
-- `< 0.15` → ⚠️ Cog in the machine, likely not an independent PI
+**The bands:**
+- `> 0.30` → A credible, independent researcher
+- `0.15 – 0.30` → Building independence, not there yet
+- `< 0.15` → ⚠️ A bench hand, not a lab head
 
-### 3. Corresponding author ≠ last author
+### 3. "Last author" isn't the same as "PI"
 
-Many assume the last author is the PI, but the **corresponding-author marker** is the gold standard.
+People assume the last name on the list is the PI. The **corresponding-author marker** is what actually tells you.
 
-- Last + corresponding = true PI (weight 1.0)
-- Co-corresponding (not last) = half-PI (weight 0.5)
-- Last without corresponding marker = possibly just senior in name
+- Last position + corresponding marker = the real PI (weight 1.0)
+- Co-corresponding but not last = half the claim (weight 0.5)
+- Last position, no corresponding marker = probably just the senior name on the door
 
-See **who actually owns the project**.
+Find out **who actually owns the project**.
 
-### 4. Grant acknowledgment ≠ grant ownership
+### 4. A grant in the acknowledgments isn't their grant
 
-A grant number in the acknowledgments ≠ their grant.
+Seeing a grant number in the footnotes doesn't mean it's theirs.
 
-**Cross-check method:**
-- Search all papers using that grant ID
-- See who is corresponding on those papers
-- If it's always someone else corresponding → they're just **riding a team member's funding**
+**How to check:**
+- Pull every paper that cites that grant ID
+- Look at who's corresponding on those papers
+- If it's always someone else → they're **surfing on someone else's money**
 
-> The "owner" of a grant is the person who repeatedly serves as corresponding on papers using that grant ID.
+> The real owner of a grant is the person who keeps showing up as corresponding author on the papers funded by it.
 
-### 5. Youth grant only = permanent attending, not PI
+### 5. Only ever held a Youth grant? They're stuck.
 
-NSFC grant types directly reveal career stage:
+In the Chinese funding system, grant tier maps directly to career stage:
 
-| Grant type | Prefix | Meaning |
+| Grant type | Prefix | What it means |
 |:---|:---|:---|
-| Youth Project | `8xxxxxx` | Entry-level, ~210K CNY, starting point |
-| **General Program** | `3xxxxxx` | ⭐ **Minimum threshold for independent PI**, ~550K |
-| Excellent Young | `2xxxxxx` | Elite, ~2M |
-| Key Program | `7xxxxxx` | Senior PI, ~3M |
+| Youth Project | `8xxxxxx` | Entry-level, ~210K CNY — everyone starts here |
+| **General Program** | `3xxxxxx` | ⭐ **The minimum bar for calling yourself an independent PI**, ~550K |
+| Excellent Young | `2xxxxxx` | Competitive, ~2M |
+| Key Program | `7xxxxxx` | Senior PI territory, ~3M |
 
-If someone has published for years but **never won a General Program** — likely a permanent attending, not an independent researcher.
+Someone who's been publishing for years but **has never landed a General Program** is likely what Chinese academia calls a "permanent attending" (万年主治) — stuck at the same rank, never broke out on their own.
 
-### 6. 8 years, same boss, still middle author = ceiling
+### 6. Eight years, same lab head, still a middle author? That's a ceiling.
 
-Look at the co-author **power structure**:
+Map the co-author **power structure**:
 
-- If someone consistently publishes with the same senior PI and stays in middle positions → never developed an independent line
-- Are there papers without the Boss? → That's the real independence signal
-- The **independence trajectory** matters more than the current state: rising or plateaued?
+- If they keep publishing with the same senior PI and never move up from the middle of the list → they've never carved out their own line
+- Are there papers *without* the lab head? → That's the real independence signal
+- The **trajectory** matters more than the snapshot: are they climbing, or have they flatlined?
 
 ---
 
 ## 🤔 What is this
 
-**advisor-insight** is a Hermes Agent skill that systematically evaluates a potential academic advisor's **real research profile** — stripping away institutional branding, inflated titles, and team-based prestige to reveal the individual's actual independent contributions.
+**advisor-insight** is a Hermes Agent skill that takes a hard, data-driven look at a potential advisor's **actual research profile** — cutting past institutional name-drops, puffed-up titles, and team accomplishments to show you what this person has actually done on their own.
 
-**Core principle:** Data over reputation. Evidence over rhetoric. Comprehensive over selective.
+**The principle:** Data over reputation. Evidence over rhetoric. The full picture over the highlight reel.
 
 ---
 
-## 📋 What it reveals
+## 📋 What it tells you
 
-- 🎯 Is this person truly an independent PI, or a platform-dependent contributor?
-- 📊 Their actual publication independence ratio vs. team co-authorship
-- 💰 Do they genuinely own independent grants (not borrowed)?
-- 🔗 Their real power position in the co-author network (Boss / peer / student)
-- 📈 Is their career trajectory rising, plateauing, or peaked
-- ⚖️ How competitive would you be joining their group
+- 🎯 Are they a real, independent PI — or just riding someone else's platform?
+- 📊 Their true independence ratio versus how often they're a passenger on other people's papers
+- 💰 Do they actually hold their own funding, or is it borrowed?
+- 🔗 Where they really sit in the co-author hierarchy (lab head / peer / trainee)
+- 📈 Is their career still climbing, coasting, or already topped out
+- ⚖️ What joining their group would actually mean for your competitiveness and future
 
 ---
 
 ## 📄 Sample Report
 
-> ⚠️ **Synthetic case disclaimer**　This report is fictional, based on real academic evaluation patterns. All data is for demonstration and does not represent any real individual.
+> ⚠️ **Synthetic case disclaimer** — This report is fictional, built from real evaluation patterns. No data here refers to any actual person.
 
 ### 📊 Advisor Insight Report · [Sample advisor]
 
@@ -341,29 +341,29 @@ Look at the co-author **power structure**:
 
 **Independence ratio: `0.18`** 　🔴 **Team dependent · Not an independent PI**
 
-(Independent PI threshold is 0.30)
+(Threshold for an independent PI: 0.30)
 
 ---
 
-**Author role distribution:**
+**Author role breakdown:**
 
 | Role | Share |
 |:---|:---|
-| First author | ~5-10% |
-| Corresponding | ~5% or less |
+| First author | ~5–10% |
+| Corresponding | Under 5% |
 | Middle author | ⚠️ **~80%** |
-| Large consortium (>20) | ~10% |
+| Large consortium (>20 authors) | ~10% |
 
 ---
 
 **Journal quality:**
 
-| Tier | Status |
+| Tier | Picture |
 |:---|:---|
-| T1 Elite (IF>15) | Several · all middle author |
-| T2 Top (IF 8-15) | A number |
-| T3-T4 (IF 2-8) | Majority · first-author here |
-| T5 Low/predatory | ⚠️ Present |
+| T1 Elite (IF>15) | A handful — but always middle author |
+| T2 Top (IF 8–15) | Several |
+| T3–T4 (IF 2–8) | The bulk — first-author papers land here |
+| T5 Low / predatory | ⚠️ Yes, some |
 
 ---
 
@@ -371,27 +371,27 @@ Look at the co-author **power structure**:
 
 | Type | Status |
 |:---|:---|
-| NSFC Youth project | 1 · completed |
-| NSFC General Program | ❌ **None** |
-| Institutional grants | A few |
+| NSFC Youth Project | 1 — completed |
+| NSFC General Program | ❌ **Never** |
+| Institutional grants | A couple |
 
-> ⚠️ Youth grant only　·　Permanent attending risk
+> ⚠️ Youth grant only — stuck at attending level
 
 ---
 
 **Co-author power structure:**
 
-| Metric | Result |
+| Metric | Finding |
 |:---|:---|
-| Core Boss | In ~80% of papers · last author |
-| Target's position | ⚠️ Consistently 5-8 of 10-15 |
-| Independent (no Boss) | ❌ Almost none |
+| The lab head (Boss) | Shows up on ~80% of papers — always last |
+| Where this person sits | ⚠️ Stuck at position 5–8 out of 10–15, year after year |
+| Papers without the Boss | ❌ Almost zero |
 
 ---
 
-> ### ⚠️ Overall verdict
+> ### ⚠️ The verdict
 >
-> This researcher has long served as a **core middle author in a senior PI's team**, with many high-IF publications, but **almost never as first or corresponding author**. Independence ratio 0.18 falls well below the 0.30 independent-PI threshold. Only a Youth Project grant, never a General Program. **Not equipped to independently supervise PhD students**.
+> This researcher has spent years as the **workhorse middle author in a senior PI's lab**. Plenty of high-IF papers to their name, but **almost never in the driver's seat** — rarely first author, almost never corresponding. Independence ratio of 0.18 sits well below the 0.30 bar for running an independent group. Only a Youth Project grant to their name, never a General Program. **Not someone who can independently mentor a PhD student.**
 
 ---
 
@@ -404,30 +404,30 @@ skill_view(name='advisor-insight')
 # Then follow the guided workflow
 ```
 
-You'll need to provide:
-- Advisor's full name (Chinese + English) and aliases
+You'll need:
+- The advisor's full name (Chinese + English) and any aliases
 - Current institution + department
-- Title/rank (if known)
-- ORCID (if available — gold standard)
-- Known collaborators or students
-- Research area keywords
+- Title or rank (if you know it)
+- ORCID, if they have one — this is the gold standard for nailing down identity
+- Any known collaborators or former students
+- Research-area keywords
 
-> ⚠️ A name alone is not enough. At minimum, **institution + department** is required to begin disambiguation.
+> ⚠️ A name on its own won't cut it. You need at least **institution + department** before disambiguation can even begin.
 
 ---
 
 ## ⚙️ How it works
 
-Five phases of systematic evaluation:
+Five phases, one verdict:
 
-| Phase | Name | What it does |
+| Phase | Name | What happens |
 |:---|:---|:---|
-| Phase 0 | Disambiguation | Cross-verify across PubMed/ORCID/Scholar/institution sites to confirm identity |
-| Phase 1 | Publication audit | Harvest PubMed papers, classify each by author role, compute independence ratio |
-| Phase 2 | Grant analysis | Parse grant IDs from acknowledgments, cross-verify true ownership |
-| Phase 3 | Co-author network | Count co-occurrence, map power structure and academic food chain |
-| Phase 4 | Career trajectory | Reconstruct career from publication history, assess independence trend |
-| Phase 5 | Synthesis | Aggregate all dimensions into standardized scoring and verdict |
+| Phase 0 | Disambiguation | Cross-check PubMed, ORCID, Scholar, and institution pages — make sure you've got the right person |
+| Phase 1 | Publication audit | Pull every PubMed paper, classify each by author role, compute the independence ratio |
+| Phase 2 | Grant analysis | Extract grant IDs from acknowledgments, trace who actually owns each one |
+| Phase 3 | Co-author network | Count co-authorships, map the power structure and the lab's food chain |
+| Phase 4 | Career trajectory | Reconstruct the career arc from publication history — is independence growing or stalled? |
+| Phase 5 | Synthesis | Roll everything up into a standardized score and a plain-English verdict |
 
 ---
 
