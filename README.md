@@ -1,10 +1,10 @@
 <div align="center">
 
-# 选错导师，毁掉五年
+# 🔥 roast-my-pi
 
-### One wrong advisor, five years gone.
+### 选错导师，毁掉五年 · One wrong advisor, five years gone.
 
-**Hermes Agent 技能 · 用数据看清导师真面目**
+**用数据看清导师真面目 · Data-driven advisor X-ray**
 
 *数据胜于声誉 · 证据胜于修辞 · 全面胜于片面*
 
@@ -23,9 +23,18 @@
 
 ---
 
-# 🇨🇳 中文版
+<div align="center">
 
-## 🚨 避坑指南：6 条识破注水导师
+**[🇨🇳 中文版](#中文版)** ｜ **[🇬🇧 English](#english)**
+
+</div>
+
+---
+
+## 中文版
+
+<details open>
+<summary><b>🚨 避坑指南：6 条识破注水导师</b>　<em>（点击展开/收起）</em></summary>
 
 > 每一条都能截图单发。读完你永远不会再被简历唬住。
 
@@ -104,17 +113,19 @@ NSFC 基金类型直接暴露职业阶段：
 - 有没有不带 Boss 独立发的论文？→ 这才是真正的独立信号
 - **独立性的轨迹**比当下状态更重要：是在上升，还是已经停滞？
 
----
+</details>
 
-## 🤔 这是什么
+<details open>
+<summary><b>🤔 这是什么</b>　<em>（点击展开/收起）</em></summary>
 
-**advisor-insight（导师锐评）** 是一个 Hermes Agent 技能，用于系统性地客观评估一位潜在学术导师的**真实科研画像** —— 剥离机构光环、虚高头衔、团队荣誉，揭示个人的实际独立贡献。
+**roast-my-pi（导师锐评）** 是一个 Hermes Agent 技能，用于系统性地客观评估一位潜在学术导师的**真实科研画像** —— 剥离机构光环、虚高头衔、团队荣誉，揭示个人的实际独立贡献。
 
 **核心原则：** 数据胜于声誉。证据胜于修辞。全面胜于片面。
 
----
+</details>
 
-## 📋 它能告诉你什么
+<details open>
+<summary><b>📋 它能告诉你什么</b>　<em>（点击展开/收起）</em></summary>
 
 - 🎯 这个人是真正的独立 PI，还是平台依赖型贡献者？
 - 📊 他的实际发文独立性比率 vs 团队挂名比率
@@ -123,9 +134,10 @@ NSFC 基金类型直接暴露职业阶段：
 - 📈 职业轨迹是上升、停滞、还是已经触顶
 - ⚖️ 你加入他的组，竞争力和发展前景如何
 
----
+</details>
 
-## 📄 锐评示例
+<details open>
+<summary><b>📄 锐评示例</b>　<em>（点击展开/收起）</em></summary>
 
 > ⚠️ **合成案例声明**　本报告基于真实学术评估模式虚构，所有数据为演示用，不代表任何真实个人。
 
@@ -189,9 +201,10 @@ NSFC 基金类型直接暴露职业阶段：
 >
 > 该研究者长期作为**某大牛团队的核心中间作者**，发表了大量高 IF 论文，但**几乎从不担任一作或通讯**。独立性比率 0.18 远低于独立 PI 门槛 0.30。基金仅有青年项目，从未获得面上项目。**不具备独立指导博士生的条件**。
 
----
+</details>
 
-## 🚀 快速开始
+<details open>
+<summary><b>🚀 快速开始</b>　<em>（点击展开/收起）</em></summary>
 
 ```bash
 # 在 Hermes Agent 中加载技能
@@ -210,9 +223,10 @@ skill_view(name='advisor-insight')
 
 > ⚠️ 仅提供名字无法评估。至少需要**机构 + 科室**才能开始消歧。
 
----
+</details>
 
-## ⚙️ 工作原理
+<details open>
+<summary><b>⚙️ 工作原理</b>　<em>（点击展开/收起）</em></summary>
 
 五个阶段的系统化评估：
 
@@ -225,11 +239,14 @@ skill_view(name='advisor-insight')
 | Phase 4 | 职业轨迹 | 从发文历史重建职业轨迹，判断独立性趋势 |
 | Phase 5 | 综合评分 | 汇总所有维度，给出标准化评分和结论 |
 
+</details>
+
 ---
 
-# 🇬🇧 English
+## English
 
-## 🚨 Red Flags: 6 Ways to Tell an Advisor Is Inflated
+<details>
+<summary><b>🚨 Red Flags: 6 Ways to Tell an Advisor Is Inflated</b>　<em>(click to expand)</em></summary>
 
 > Save these. Screenshot them. You'll never look at a CV the same way again.
 
@@ -308,17 +325,19 @@ Map the co-author **power structure**:
 - Are there papers *without* the lab head? → That's the real independence signal
 - The **trajectory** matters more than the snapshot: are they climbing, or have they flatlined?
 
----
+</details>
 
-## 🤔 What is this
+<details>
+<summary><b>🤔 What is this</b>　<em>(click to expand)</em></summary>
 
-**advisor-insight** is a Hermes Agent skill that takes a hard, data-driven look at a potential advisor's **actual research profile** — cutting past institutional name-drops, puffed-up titles, and team accomplishments to show you what this person has actually done on their own.
+**roast-my-pi** is a Hermes Agent skill that takes a hard, data-driven look at a potential advisor's **actual research profile** — cutting past institutional name-drops, puffed-up titles, and team accomplishments to show you what this person has actually done on their own.
 
 **The principle:** Data over reputation. Evidence over rhetoric. The full picture over the highlight reel.
 
----
+</details>
 
-## 📋 What it tells you
+<details>
+<summary><b>📋 What it tells you</b>　<em>(click to expand)</em></summary>
 
 - 🎯 Are they a real, independent PI — or just riding someone else's platform?
 - 📊 Their true independence ratio versus how often they're a passenger on other people's papers
@@ -327,9 +346,10 @@ Map the co-author **power structure**:
 - 📈 Is their career still climbing, coasting, or already topped out
 - ⚖️ What joining their group would actually mean for your competitiveness and future
 
----
+</details>
 
-## 📄 Sample Report
+<details>
+<summary><b>📄 Sample Report</b>　<em>(click to expand)</em></summary>
 
 > ⚠️ **Synthetic case disclaimer** — This report is fictional, built from real evaluation patterns. No data here refers to any actual person.
 
@@ -393,9 +413,10 @@ Map the co-author **power structure**:
 >
 > This researcher has spent years as the **workhorse middle author in a senior PI's lab**. Plenty of high-IF papers to their name, but **almost never in the driver's seat** — rarely first author, almost never corresponding. Independence ratio of 0.18 sits well below the 0.30 bar for running an independent group. Only a Youth Project grant to their name, never a General Program. **Not someone who can independently mentor a PhD student.**
 
----
+</details>
 
-## 🚀 Quick Start
+<details>
+<summary><b>🚀 Quick Start</b>　<em>(click to expand)</em></summary>
 
 ```bash
 # Load the skill in Hermes Agent
@@ -414,9 +435,10 @@ You'll need:
 
 > ⚠️ A name on its own won't cut it. You need at least **institution + department** before disambiguation can even begin.
 
----
+</details>
 
-## ⚙️ How it works
+<details>
+<summary><b>⚙️ How it works</b>　<em>(click to expand)</em></summary>
 
 Five phases, one verdict:
 
@@ -428,6 +450,8 @@ Five phases, one verdict:
 | Phase 3 | Co-author network | Count co-authorships, map the power structure and the lab's food chain |
 | Phase 4 | Career trajectory | Reconstruct the career arc from publication history — is independence growing or stalled? |
 | Phase 5 | Synthesis | Roll everything up into a standardized score and a plain-English verdict |
+
+</details>
 
 ---
 
