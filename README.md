@@ -11,7 +11,7 @@
 
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20macOS%20%7C%20Windows-green)
-![Skill](https://img.shields.io/badge/Hermes%20Agent-advisor--insight-orange)
+![Skill](https://img.shields.io/badge/roast--my--pi-advisor--insight-8b3a3a)
 ![Language](https://img.shields.io/badge/%E8%AF%AD%E8%A8%80-ZH%20%2F%20EN-yellow)
 
 **[中文版](#中文版)** ｜ **[English](#english)**
