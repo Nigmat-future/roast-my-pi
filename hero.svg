@@ -1,120 +1,111 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="440" viewBox="0 0 1200 440" role="img" aria-label="roast-my-pi: data-driven advisor X-ray">
-  <title>roast-my-pi</title>
-  <desc>One wrong advisor, five years gone. A data-driven X-ray of an academic advisor's real contribution.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="440" viewBox="0 0 1200 440" role="img" aria-label="roast-my-pi: 选错导师，毁掉五年">
+  <title>roast-my-pi · 导师锐评</title>
+  <desc>墨白封面。署名位置决定真实贡献——Nature 一作不等于第 28 作者。</desc>
 
   <style>
-    .bg{fill:#FAFAF7}
-    .ink{fill:#15120F}
-    .muted{fill:#8C867D}
-    .hair{stroke:#E5E1D9}
-    .accent{stroke:#C8462C}
-    .accentf{fill:#C8462C}
-    .grain{fill:#15120F;opacity:.03}
-    @media (prefers-color-scheme: dark){
-      .bg{fill:#0B0B0C}
-      .ink{fill:#F5F3EF}
-      .muted{fill:#797470}
-      .hair{stroke:#262529}
-      .accent{stroke:#FF6B47}
-      .accentf{fill:#FF6B47}
-      .grain{fill:#F5F3EF;opacity:.03}
-    }
+    .bg{fill:#f4efe6}
+    .ink{fill:#1a1814}
+    .muted{fill:#5c574f}
+    .hair{stroke:rgba(26,24,20,0.12)}
+    .accent{stroke:#8b3a3a}
+    .accentf{fill:#8b3a3a}
+    .stroke{fill:none;stroke:#1a1814;stroke-linecap:round;stroke-linejoin:round}
+    .accent-stroke{fill:none;stroke:#8b3a3a;stroke-linecap:round}
   </style>
 
   <rect class="bg" width="1200" height="440"/>
 
-  <!-- faint editorial vertical hairlines -->
-  <line class="hair" x1="80" y1="40" x2="80" y2="400" stroke-width="1"/>
-  <line class="hair" x1="660" y1="40" x2="660" y2="400" stroke-width="1"/>
+  <!-- editorial hairlines -->
+  <line class="hair" x1="72" y1="48" x2="72" y2="392" stroke-width="1"/>
+  <line class="hair" x1="640" y1="48" x2="640" y2="392" stroke-width="1"/>
 
   <!-- eyebrow -->
-  <circle class="accentf" cx="86" cy="86" r="4"/>
-  <text x="100" y="91" class="muted"
-        font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
-        font-size="14" letter-spacing="3.5">ADVISOR · X-RAY</text>
+  <text x="88" y="88" class="muted"
+        font-family="Cormorant Garamond, Georgia, serif"
+        font-size="13" letter-spacing="4">ADVISOR · X-RAY</text>
 
-  <!-- wordmark -->
-  <text x="78" y="214" class="ink"
-        font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
-        font-size="88" font-weight="700" letter-spacing="-3">roast-my-pi</text>
+  <!-- title -->
+  <text x="80" y="168" class="ink"
+        font-family="Noto Serif SC, Songti SC, serif"
+        font-size="52" font-weight="500" letter-spacing="2">导师锐评</text>
+  <text x="80" y="218" class="ink"
+        font-family="Cormorant Garamond, Georgia, serif"
+        font-size="28" font-style="italic" letter-spacing="1">roast-my-pi</text>
 
-  <!-- ember accent rule -->
-  <line class="accent" x1="82" y1="242" x2="232" y2="242" stroke-width="3"/>
+  <!-- accent rule -->
+  <line class="accent" x1="80" y1="240" x2="180" y2="240" stroke-width="2"/>
 
   <!-- tagline -->
-  <text x="82" y="296" class="ink"
-        font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
-        font-size="29" font-weight="600">选错导师，毁掉五年。</text>
-  <text x="82" y="332" class="muted"
-        font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
-        font-size="22">One wrong advisor, five years gone.</text>
+  <text x="80" y="290" class="ink"
+        font-family="Noto Serif SC, Songti SC, serif"
+        font-size="26" font-weight="500" letter-spacing="1">选错导师，<tspan class="accentf">毁掉五年。</tspan></text>
+  <text x="80" y="328" class="muted"
+        font-family="Cormorant Garamond, Georgia, serif"
+        font-size="20" font-style="italic">One wrong advisor, five years gone.</text>
 
-  <!-- the three lenses, mono -->
-  <text x="82" y="382" class="muted"
-        font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
-        font-size="13" letter-spacing="2">independence · funding · power-structure</text>
+  <!-- three lenses -->
+  <text x="80" y="378" class="muted"
+        font-family="Cormorant Garamond, Georgia, serif"
+        font-size="12" letter-spacing="3">independence · funding · power-structure</text>
 
-  <!-- ===== right motif: author position track ===== -->
-  <text x="720" y="150" class="muted"
-        font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
-        font-size="13" letter-spacing="2.5">AUTHOR POSITION</text>
+  <!-- ===== right: hand-drawn author position track ===== -->
+  <text x="700" y="120" class="muted"
+        font-family="Cormorant Garamond, Georgia, serif"
+        font-size="12" letter-spacing="3">AUTHOR POSITION</text>
 
-  <!-- baseline axis -->
-  <line class="hair" x1="720" y1="250" x2="1120" y2="250" stroke-width="2"/>
+  <!-- baseline -->
+  <line class="stroke" x1="700" y1="260" x2="1120" y2="260" stroke-width="1.2" opacity="0.35"/>
 
-  <!-- minor ticks (positions 2..27) -->
-  <g class="hair" stroke-width="2">
-    <line x1="735" y1="250" x2="735" y2="242"/>
-    <line x1="749" y1="250" x2="749" y2="242"/>
-    <line x1="764" y1="250" x2="764" y2="242"/>
-    <line x1="779" y1="250" x2="779" y2="242"/>
-    <line x1="793" y1="250" x2="793" y2="242"/>
-    <line x1="808" y1="250" x2="808" y2="242"/>
-    <line x1="823" y1="250" x2="823" y2="242"/>
-    <line x1="837" y1="250" x2="837" y2="242"/>
-    <line x1="852" y1="250" x2="852" y2="242"/>
-    <line x1="867" y1="250" x2="867" y2="242"/>
-    <line x1="881" y1="250" x2="881" y2="242"/>
-    <line x1="896" y1="250" x2="896" y2="242"/>
-    <line x1="911" y1="250" x2="911" y2="242"/>
-    <line x1="925" y1="250" x2="925" y2="242"/>
-    <line x1="940" y1="250" x2="940" y2="242"/>
-    <line x1="955" y1="250" x2="955" y2="242"/>
-    <line x1="969" y1="250" x2="969" y2="242"/>
-    <line x1="984" y1="250" x2="984" y2="242"/>
-    <line x1="999" y1="250" x2="999" y2="242"/>
-    <line x1="1013" y1="250" x2="1013" y2="242"/>
-    <line x1="1028" y1="250" x2="1028" y2="242"/>
-    <line x1="1043" y1="250" x2="1043" y2="242"/>
-    <line x1="1057" y1="250" x2="1057" y2="242"/>
-    <line x1="1072" y1="250" x2="1072" y2="242"/>
-    <line x1="1087" y1="250" x2="1087" y2="242"/>
-    <line x1="1101" y1="250" x2="1101" y2="242"/>
+  <!-- faint ticks -->
+  <g class="hair" stroke-width="1" opacity="0.5">
+    <line x1="730" y1="260" x2="730" y2="254"/>
+    <line x1="760" y1="260" x2="760" y2="254"/>
+    <line x1="790" y1="260" x2="790" y2="254"/>
+    <line x1="820" y1="260" x2="820" y2="254"/>
+    <line x1="850" y1="260" x2="850" y2="254"/>
+    <line x1="880" y1="260" x2="880" y2="254"/>
+    <line x1="910" y1="260" x2="910" y2="254"/>
+    <line x1="940" y1="260" x2="940" y2="254"/>
+    <line x1="970" y1="260" x2="970" y2="254"/>
+    <line x1="1000" y1="260" x2="1000" y2="254"/>
+    <line x1="1030" y1="260" x2="1030" y2="254"/>
+    <line x1="1060" y1="260" x2="1060" y2="254"/>
+    <line x1="1090" y1="260" x2="1090" y2="254"/>
   </g>
 
-  <!-- position 1: solid ember, the real driver -->
-  <line class="accent" x1="720" y1="250" x2="720" y2="204" stroke-width="6"/>
-  <text x="720" y="276" class="ink"
-        font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
+  <!-- position 1: bold ink stroke -->
+  <path class="stroke" stroke-width="4" d="M700 260 L700 175" opacity="0.9"/>
+  <text x="700" y="284" class="ink"
+        font-family="Cormorant Garamond, Georgia, serif"
         font-size="12" text-anchor="middle">1st</text>
+  <text x="700" y="155" class="muted"
+        font-family="Noto Serif SC, Songti SC, serif"
+        font-size="11" text-anchor="middle">真本事</text>
 
-  <!-- position 28: targeted / roasted -->
-  <line class="accent" x1="1116" y1="250" x2="1116" y2="204" stroke-width="6"/>
-  <!-- reticle ring -->
-  <circle class="bg" cx="1116" cy="227" r="22" stroke-width="0"/>
-  <circle cx="1116" cy="227" r="22" class="accent" fill="none" stroke-width="2"/>
-  <line class="accent" x1="1086" y1="227" x2="1094" y2="227" stroke-width="1.5"/>
-  <line class="accent" x1="1138" y1="227" x2="1146" y2="227" stroke-width="1.5"/>
-  <line class="accent" x1="1116" y1="197" x2="1116" y2="205" stroke-width="1.5"/>
-  <text x="1116" y="184" class="accentf"
-        font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
-        font-size="12" text-anchor="middle" letter-spacing="1">roasted</text>
-  <text x="1116" y="276" class="ink"
-        font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
+  <!-- position 28: broken + accent reticle -->
+  <path class="stroke" stroke-width="1.5" stroke-dasharray="4 6" d="M1110 260 L1110 195" opacity="0.35"/>
+  <circle cx="1110" cy="218" r="20" class="accent-stroke" stroke-width="1.2" opacity="0.75"/>
+  <line class="accent" x1="1086" y1="218" x2="1096" y2="218" stroke-width="1"/>
+  <line class="accent" x1="1124" y1="218" x2="1134" y2="218" stroke-width="1"/>
+  <text x="1110" y="284" class="accentf"
+        font-family="Cormorant Garamond, Georgia, serif"
         font-size="12" text-anchor="middle">28th</text>
+  <text x="1110" y="175" class="accentf"
+        font-family="Noto Serif SC, Songti SC, serif"
+        font-size="11" text-anchor="middle">递样本</text>
 
-  <!-- divider dot between columns -->
-  <text x="1192" y="424" class="muted"
-        font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
-        font-size="11" text-anchor="end" letter-spacing="1">v1.0</text>
+  <!-- independence ratio bar -->
+  <text x="700" y="340" class="muted"
+        font-family="Cormorant Garamond, Georgia, serif"
+        font-size="11" letter-spacing="2">INDEPENDENCE 0.18 / 0.30</text>
+  <line x1="700" y1="358" x2="920" y2="358" stroke="rgba(26,24,20,0.12)" stroke-width="1"/>
+  <line x1="700" y1="358" x2="756" y2="358" stroke="#8b3a3a" stroke-width="2.5" opacity="0.65"/>
+  <line x1="820" y1="352" x2="820" y2="364" stroke="#1a1814" stroke-width="1" opacity="0.3"/>
+  <text x="820" y="378" class="muted"
+        font-family="Cormorant Garamond, Georgia, serif"
+        font-size="9" text-anchor="middle">门槛</text>
+
+  <text x="1120" y="420" class="muted"
+        font-family="Cormorant Garamond, Georgia, serif"
+        font-size="10" text-anchor="end" letter-spacing="2">墨白</text>
 </svg>

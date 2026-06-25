@@ -3,402 +3,450 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>roast-my-pi · 导师锐评</title>
+<title>导师锐评 · roast-my-pi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+SC:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* ===== TOKENS · EDITORIAL LUXURY ===== */
 :root{
-  --paper:#FAF7F2;
-  --paper-deep:#F1ECE4;
-  --ink:#191613;
-  --muted:#9A938A;
-  --hair:rgba(25,22,19,0.09);
-  --accent:#C8462C;
-  --accent-soft:rgba(200,70,44,0.08);
-  --card:#FFFFFF;
-  --serif:'Fraunces',Georgia,'Times New Roman',serif;
-  --sans:'Plus Jakarta Sans',system-ui,sans-serif;
-  --mono:'SF Mono','JetBrains Mono',ui-monospace,monospace;
-  --ease:cubic-bezier(0.32,0.72,0,1);
-  --ease-expo:cubic-bezier(0.16,1,0.3,1);
-  --shadow-soft:0 1px 2px rgba(25,22,19,0.04),0 18px 40px -12px rgba(25,22,19,0.10);
-  --shadow-lift:0 1px 2px rgba(25,22,19,0.05),0 30px 60px -18px rgba(25,22,19,0.16);
+  --paper:#f4efe6;
+  --paper-deep:#ebe4d8;
+  --ink:#1a1814;
+  --muted:#5c574f;
+  --rule:rgba(26,24,20,0.12);
+  --accent:#8b3a3a;
+  --accent-soft:rgba(139,58,58,0.08);
+  --accent-green:#4a5d52;
+  --serif-en:"Cormorant Garamond",Georgia,serif;
+  --serif-zh:"Noto Serif SC","Songti SC",serif;
 }
-*,*::before,*::after{box-sizing:border-box;margin:0}
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
 body{
-  font-family:var(--sans);background:var(--paper);color:var(--ink);
-  line-height:1.6;overflow-x:hidden;min-height:100dvh;
-  font-feature-settings:"ss01","cv01";
+  font-family:var(--serif-zh);background:var(--paper);color:var(--ink);
+  line-height:1.7;overflow-x:hidden;min-height:100dvh;
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
 }
 
-/* ===== GRAIN (fixed, pointer-events none) ===== */
-.grain{
-  position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.04;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  mix-blend-mode:multiply;
-}
+.wrap{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 clamp(1.25rem,4vw,2.5rem)}
+.section{padding:clamp(4.5rem,10vw,8rem) 0}
 
-/* ===== FLOATING NAV (blur allowed — it's fixed) ===== */
+/* —— Nav —— */
 .nav{
-  position:fixed;top:1.5rem;left:50%;transform:translateX(-50%);z-index:100;
-  display:flex;align-items:center;gap:2rem;
-  padding:.6rem .65rem .6rem 1.5rem;
-  background:rgba(250,247,242,0.72);
-  backdrop-filter:blur(24px) saturate(1.4);-webkit-backdrop-filter:blur(24px) saturate(1.4);
-  border:1px solid var(--hair);border-radius:999px;
-  box-shadow:0 8px 30px -10px rgba(25,22,19,0.12);
-  font-size:.8125rem;font-weight:500;
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(244,239,230,0.92);
+  border-bottom:1px solid var(--rule);
 }
-.nav a{color:var(--muted);text-decoration:none;transition:color .4s var(--ease)}
-.nav a:hover{color:var(--ink)}
-.nav-brand{font-family:var(--mono);font-weight:600;font-size:.78rem;letter-spacing:-.01em;color:var(--ink)}
+.nav-inner{
+  max-width:1080px;margin:0 auto;padding:.9rem clamp(1.25rem,4vw,2.5rem);
+  display:flex;align-items:center;justify-content:space-between;gap:1.5rem;
+}
+.nav-brand{
+  font-family:var(--serif-en);font-size:.82rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--muted);
+}
+.nav-links{display:flex;align-items:center;gap:clamp(1rem,3vw,2rem);font-size:.82rem}
+.nav-links a{color:var(--muted);text-decoration:none;letter-spacing:.06em;transition:color .3s}
+.nav-links a:hover{color:var(--ink)}
 .nav-cta{
-  display:inline-flex;align-items:center;gap:.45rem;
-  padding:.55rem 1rem .55rem 1.05rem;
-  background:var(--ink);color:var(--paper)!important;border-radius:999px;
-  font-weight:600;font-size:.75rem;
+  padding:.45rem 1rem;border:1px solid var(--ink);color:var(--ink)!important;
+  letter-spacing:.1em;transition:background .3s,color .3s;
 }
-.nav-cta .ddot{width:5px;height:5px;background:var(--accent);border-radius:50%}
+.nav-cta:hover{background:var(--ink);color:var(--paper)!important}
 
-/* ===== LAYOUT ===== */
-.wrap{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:0 2rem}
-.section{padding:8rem 0}
-.section-head{max-width:620px;margin-bottom:4rem}
+/* —— Hero —— */
+.hero{padding:clamp(7rem,14vw,11rem) 0 clamp(4rem,8vw,6rem)}
+.hero-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,5rem);align-items:center;
+}
 .eyebrow{
-  display:inline-flex;align-items:center;gap:.5rem;
-  font-family:var(--mono);font-size:.6875rem;text-transform:uppercase;
-  letter-spacing:.28em;color:var(--accent);margin-bottom:1.25rem;
+  font-family:var(--serif-en);font-size:.72rem;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:2rem;
 }
-.eyebrow::before{content:'';width:1.75rem;height:1px;background:var(--accent)}
-.h2{
-  font-family:var(--serif);font-optical-sizing:auto;
-  font-size:clamp(2.25rem,4.5vw,3.75rem);font-weight:400;line-height:1.05;
-  letter-spacing:-.02em;
-}
-.h2 em{font-style:italic;font-weight:300;color:var(--accent)}
-.lede{color:var(--muted);font-size:1.0625rem;margin-top:1.25rem;line-height:1.7}
-
-/* ===== HERO ===== */
-.hero{padding:11rem 0 7rem}
-.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:5rem;align-items:end}
-.hero .eyebrow{margin-bottom:2rem}
+.eyebrow::before{content:"— ";color:var(--accent)}
 .hero h1{
-  font-family:var(--serif);font-optical-sizing:auto;
-  font-size:clamp(3.25rem,8.5vw,7.5rem);font-weight:400;line-height:.98;
-  letter-spacing:-.035em;
+  font-family:var(--serif-zh);font-size:clamp(2.4rem,6.5vw,4.5rem);
+  font-weight:500;line-height:1.18;letter-spacing:.04em;max-width:8em;
 }
-.hero h1 em{font-style:italic;font-weight:300;color:var(--accent);display:block}
+.hero h1 .accent{color:var(--accent)}
 .hero .en{
-  font-family:var(--serif);font-style:italic;font-weight:300;
-  font-size:1.4rem;color:var(--muted);margin-top:1.75rem;letter-spacing:-.01em;
+  font-family:var(--serif-en);font-style:italic;font-weight:400;
+  font-size:clamp(1.1rem,2.5vw,1.45rem);color:var(--muted);
+  margin-top:1.75rem;letter-spacing:.02em;
 }
 .hero .cta{
-  display:inline-flex;align-items:center;gap:.6rem;
-  margin-top:2.5rem;padding:.7rem 1.05rem .7rem 1.65rem;
-  background:var(--ink);color:var(--paper);border-radius:999px;
-  font-weight:600;font-size:.875rem;text-decoration:none;cursor:pointer;
-  transition:transform .5s var(--ease);
+  display:inline-block;margin-top:2.5rem;padding:.7rem 0;
+  font-size:.88rem;letter-spacing:.14em;color:var(--ink);
+  text-decoration:none;border-bottom:1px solid var(--ink);
+  transition:color .3s,border-color .3s;
 }
-.hero .cta:hover{transform:scale(1.025)}
-.hero .cta:active{transform:scale(.97)}
-.hero .cta .nest{
-  display:flex;align-items:center;justify-content:center;width:1.9rem;height:1.9rem;
-  border-radius:50%;background:var(--accent);color:var(--ink);
-  transition:transform .5s var(--ease);
+.hero .cta:hover{color:var(--accent);border-color:var(--accent)}
+
+.hero-visual{
+  display:flex;align-items:center;justify-content:center;
+  padding:clamp(1rem,3vw,2rem) 0;
 }
-.hero .cta:hover .nest{transform:rotate(45deg) scale(1.08)}
+.hero-visual svg{width:100%;max-width:420px;height:auto}
 
-/* hero right: the ratio signature visual */
-.ratio-card{
-  position:relative;padding:2.25rem;
-  background:var(--paper-deep);border:1px solid var(--hair);
-  border-radius:2rem;box-shadow:var(--shadow-soft);
+/* —— Band —— */
+.band{
+  padding:clamp(3.5rem,8vw,5.5rem) 0;
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  text-align:center;
 }
-.ratio-card .rc-label{font-family:var(--mono);font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
-.ratio-card .rc-num{font-family:var(--serif);font-size:4.5rem;font-weight:300;line-height:1;letter-spacing:-.04em;margin:.5rem 0 .25rem;color:var(--accent)}
-.ratio-card .rc-sub{font-size:.8rem;color:var(--muted);margin-bottom:1.75rem}
-.rc-bar{position:relative;height:6px;background:rgba(25,22,19,0.08);border-radius:99px;margin-bottom:.5rem}
-.rc-bar .fill{position:absolute;top:0;left:0;height:100%;background:var(--accent);border-radius:99px}
-.rc-bar .mark{position:absolute;top:-7px;width:2px;height:20px;background:var(--ink);opacity:.35}
-.rc-scale{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.6rem;color:var(--muted);margin-top:.5rem}
-
-/* ===== DOUBLE BEZEL ===== */
-.bezel{background:var(--paper-deep);border:1px solid var(--hair);border-radius:2rem;padding:1.5rem;box-shadow:var(--shadow-soft);transition:box-shadow .6s var(--ease),transform .6s var(--ease)}
-.bezel:hover{box-shadow:var(--shadow-lift);transform:translateY(-3px)}
-.bezel > .core{background:var(--card);border-radius:calc(2rem - 1.5rem);padding:2rem;box-shadow:inset 0 1px 0 rgba(255,255,255,0.9);height:100%}
-
-/* flat editorial card (no glass) */
-.ecard{background:var(--card);border:1px solid var(--hair);border-radius:1.5rem;padding:2rem;box-shadow:var(--shadow-soft);transition:box-shadow .6s var(--ease),transform .6s var(--ease)}
-.ecard:hover{box-shadow:var(--shadow-lift);transform:translateY(-3px)}
-
-/* ===== BENTO LENSES ===== */
-.bento-lenses{display:grid;grid-template-columns:repeat(6,1fr);gap:1.5rem}
-.lens-1{grid-column:span 3}
-.lens-2{grid-column:span 3}
-.lens-1 .core{display:flex;flex-direction:column;justify-content:space-between}
-.metric-xl{font-family:var(--serif);font-size:5.5rem;font-weight:300;line-height:.9;letter-spacing:-.04em;color:var(--accent)}
-.metric-xl sup{font-size:1.5rem;vertical-align:super;font-weight:400}
-.lens-title{font-weight:700;font-size:1rem;margin-bottom:.35rem}
-.lens-hint{font-size:.8125rem;color:var(--muted);line-height:1.55}
-.lens-2 .split{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;height:100%}
-.lens-2 .split > div{display:flex;flex-direction:column}
-.lens-2 .split .metric-md{font-family:var(--serif);font-size:2.25rem;font-weight:400;line-height:1;color:var(--accent);margin-bottom:.4rem}
-.lens-2 .split .st{font-weight:700;font-size:.875rem;margin-bottom:.25rem}
-.lens-2 .split .sh{font-size:.75rem;color:var(--muted);line-height:1.5}
-
-/* ===== BENTO FLAGS ===== */
-.bento-flags{display:grid;grid-template-columns:repeat(6,1fr);gap:1.25rem}
-.flag{grid-column:span 2}
-.flag.wide{grid-column:span 4}
-.flag .fnum{font-family:var(--mono);font-size:.6875rem;letter-spacing:.15em;color:var(--accent);margin-bottom:.65rem}
-.flag h3{font-family:var(--serif);font-weight:500;font-size:1.25rem;line-height:1.2;letter-spacing:-.01em;margin-bottom:.5rem}
-.flag h3 em{font-style:italic;color:var(--accent)}
-.flag p{font-size:.8125rem;color:var(--muted);line-height:1.6}
-.flag.wide{display:flex;flex-direction:column;justify-content:center}
-.flag.wide h3{font-size:1.5rem}
-
-/* ===== REPORT (hero bezel) ===== */
-.report-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:2rem;align-items:start}
-.report .verdict{
-  display:inline-flex;align-items:center;gap:.5rem;
-  padding:.4rem .95rem;background:var(--accent-soft);
-  border:1px solid rgba(200,70,44,0.18);border-radius:999px;
-  font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;color:var(--accent);
-  margin-bottom:1.5rem;text-transform:uppercase;
+.band q{
+  font-family:var(--serif-zh);font-size:clamp(1.2rem,3vw,1.85rem);
+  font-weight:400;line-height:1.65;letter-spacing:.03em;
+  display:block;max-width:28em;margin:0 auto;
 }
-.report .ind{font-family:var(--serif);font-size:3.5rem;font-weight:300;line-height:1;letter-spacing:-.03em;margin-bottom:.2rem}
-.report .ind em{font-style:normal;color:var(--accent)}
-.report .ind-sub{font-size:.8rem;color:var(--muted);margin-bottom:1.75rem}
-.report .rows{display:flex;flex-direction:column}
-.report .row{display:flex;justify-content:space-between;align-items:baseline;padding:.8rem 0;border-bottom:1px solid var(--hair);font-size:.875rem}
-.report .row:last-child{border-bottom:0}
-.report .row .v{font-family:var(--mono);font-weight:600;font-size:.78rem;color:var(--accent)}
-.report .quote{margin-top:1.5rem;padding:1.1rem 1.25rem;background:var(--paper-deep);border-radius:1rem;font-size:.825rem;color:var(--ink);line-height:1.6;border-left:3px solid var(--accent)}
+.band q .accent{color:var(--accent)}
+.band .cite{
+  font-family:var(--serif-en);font-size:.7rem;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--muted);margin-top:2rem;
+}
 
-/* quick start card */
-.qs h4{font-family:var(--serif);font-weight:500;font-size:1.25rem;margin-bottom:1rem}
-.qs .codeblock{font-family:var(--mono);font-size:.75rem;background:var(--ink);color:var(--paper);padding:1rem 1.15rem;border-radius:.85rem;margin-bottom:1.25rem}
-.qs .codeblock span{color:var(--accent)}
-.qs ul{list-style:none;padding:0}
-.qs li{font-size:.8rem;color:var(--muted);padding:.3rem 0;padding-left:1.1rem;position:relative;line-height:1.5}
-.qs li::before{content:'·';position:absolute;left:.2rem;color:var(--accent);font-weight:700}
-.qs .warn{margin-top:1rem;font-family:var(--mono);font-size:.68rem;color:var(--accent);letter-spacing:.05em}
+/* —— Section heads —— */
+.section-head{max-width:36em;margin-bottom:clamp(2.5rem,6vw,4rem)}
+.h2{
+  font-family:var(--serif-zh);font-size:clamp(1.75rem,4vw,2.75rem);
+  font-weight:500;line-height:1.25;letter-spacing:.03em;
+}
+.h2 .accent{color:var(--accent)}
+.lede{color:var(--muted);font-size:.95rem;margin-top:1.25rem;line-height:1.8;letter-spacing:.02em}
 
-/* ===== PHASES ===== */
-.phases{display:grid;grid-template-columns:repeat(5,1fr);gap:1.25rem}
-.phase{padding:1.75rem 1.35rem}
-.phase .tag{display:inline-block;padding:.22rem .65rem;background:var(--accent-soft);border-radius:999px;font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;color:var(--accent);margin-bottom:.85rem}
-.phase .nm{font-family:var(--serif);font-weight:500;font-size:1.1rem;margin-bottom:.3rem}
-.phase .wh{font-size:.75rem;color:var(--muted);line-height:1.55}
+/* —— Lenses —— */
+.lenses{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(1.5rem,4vw,3rem)}
+.lens{
+  padding:clamp(1.75rem,4vw,2.5rem) 0;
+  border-top:1px solid var(--rule);
+}
+.lens-num{
+  font-family:var(--serif-en);font-size:clamp(3.5rem,8vw,5rem);
+  font-weight:400;line-height:1;letter-spacing:-.03em;color:var(--accent);
+}
+.lens-num sup{font-size:.35em;vertical-align:super}
+.lens-title{font-weight:500;font-size:1rem;margin:.75rem 0 .35rem;letter-spacing:.04em}
+.lens-hint{font-size:.82rem;color:var(--muted);line-height:1.75;max-width:28em}
+.lens-split{display:grid;grid-template-columns:1fr 1fr;gap:2rem;padding-top:1rem}
+.lens-split .metric{
+  font-family:var(--serif-en);font-size:2rem;color:var(--accent-green);
+  margin-bottom:.35rem;
+}
+.lens-bar{
+  position:relative;height:1px;background:var(--rule);margin-top:2rem;
+}
+.lens-bar .fill{position:absolute;top:0;left:0;height:100%;background:var(--accent);opacity:.45}
+.lens-bar .mark{position:absolute;top:-5px;width:1px;height:11px;background:var(--ink);opacity:.3}
 
-/* ===== PULL QUOTE BAND ===== */
-.band{padding:5rem 0;text-align:center;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
-.band q{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1.5rem,3.5vw,2.5rem);line-height:1.3;letter-spacing:-.015em;display:block;max-width:760px;margin:0 auto}
-.band q em{font-style:normal;color:var(--accent)}
-.band .cite{font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:1.75rem}
+/* —— Flags —— */
+.flags{display:flex;flex-direction:column;gap:0}
+.flag{
+  display:grid;grid-template-columns:3rem 1fr;gap:1.5rem;
+  padding:2rem 0;border-top:1px solid var(--rule);align-items:start;
+}
+.flag:last-child{border-bottom:1px solid var(--rule)}
+.flag .fnum{
+  font-family:var(--serif-en);font-size:.85rem;letter-spacing:.12em;color:var(--accent);
+  padding-top:.15rem;
+}
+.flag h3{
+  font-family:var(--serif-zh);font-weight:500;font-size:1.1rem;
+  line-height:1.4;letter-spacing:.03em;margin-bottom:.4rem;
+}
+.flag h3 .accent{color:var(--accent)}
+.flag p{font-size:.82rem;color:var(--muted);line-height:1.75;max-width:42em}
 
-/* ===== FOOTER ===== */
-.footer{position:relative;z-index:2;padding:5rem 0 4rem;border-top:1px solid var(--hair)}
-.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
-.footer .brand{font-family:var(--serif);font-style:italic;font-size:1.25rem;font-weight:400}
+/* —— Report —— */
+.report-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(2rem,5vw,4rem);align-items:start}
+.report{padding-top:1rem;border-top:1px solid var(--rule)}
+.verdict{
+  font-family:var(--serif-en);font-size:.68rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;
+}
+.ind{
+  font-family:var(--serif-en);font-size:clamp(2.5rem,5vw,3.5rem);
+  font-weight:400;line-height:1;letter-spacing:-.02em;
+}
+.ind .accent{color:var(--accent)}
+.ind-sub{font-size:.8rem;color:var(--muted);margin:1rem 0 2rem;letter-spacing:.04em}
+.rows .row{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:.75rem 0;border-bottom:1px solid var(--rule);font-size:.85rem;
+}
+.rows .row:last-child{border-bottom:0}
+.rows .row .v{font-family:var(--serif-en);color:var(--accent);font-size:.82rem}
+.quote{
+  margin-top:2rem;padding-left:1.25rem;
+  border-left:2px solid var(--accent);
+  font-size:.85rem;line-height:1.8;color:var(--muted);
+}
+.quote strong{color:var(--ink);font-weight:500}
+
+.qs{padding-top:1rem;border-top:1px solid var(--rule)}
+.qs h4{
+  font-family:var(--serif-zh);font-weight:500;font-size:1.1rem;
+  margin-bottom:1.25rem;letter-spacing:.04em;
+}
+.codeblock{
+  font-family:ui-monospace,monospace;font-size:.75rem;
+  background:var(--ink);color:var(--paper);
+  padding:1rem 1.15rem;margin-bottom:1.5rem;letter-spacing:.02em;
+}
+.codeblock span{color:var(--accent)}
+.qs .req{font-size:.72rem;color:var(--muted);letter-spacing:.1em;margin-bottom:.75rem}
+.qs ul{list-style:none}
+.qs li{
+  font-size:.82rem;color:var(--muted);padding:.3rem 0;
+  padding-left:1rem;position:relative;line-height:1.6;
+}
+.qs li::before{content:"·";position:absolute;left:0;color:var(--accent)}
+.qs .warn{margin-top:1.25rem;font-size:.75rem;color:var(--accent);letter-spacing:.04em}
+
+/* —— Phases —— */
+.phases{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:clamp(1rem,3vw,1.5rem);
+}
+.phase{padding:1.5rem 0;border-top:1px solid var(--rule)}
+.phase .tag{
+  font-family:var(--serif-en);font-size:.62rem;letter-spacing:.18em;
+  color:var(--accent);margin-bottom:.75rem;display:block;
+}
+.phase .nm{font-weight:500;font-size:.95rem;margin-bottom:.3rem;letter-spacing:.03em}
+.phase .wh{font-size:.75rem;color:var(--muted);line-height:1.65}
+
+/* —— Footer —— */
+.footer{
+  padding:clamp(3rem,6vw,5rem) 0 clamp(2.5rem,5vw,4rem);
+  border-top:1px solid var(--rule);
+}
+.footer-inner{
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:1.5rem;
+}
+.footer .brand{
+  font-family:var(--serif-en);font-style:italic;font-size:1.15rem;color:var(--muted);
+}
 .footer .links{display:flex;gap:2rem}
-.footer a{color:var(--muted);text-decoration:none;font-size:.8125rem;transition:color .4s var(--ease)}
+.footer a{color:var(--muted);text-decoration:none;font-size:.8rem;letter-spacing:.04em;transition:color .3s}
 .footer a:hover{color:var(--ink)}
-.footer .copy{font-family:var(--mono);font-size:.7rem;color:var(--muted);margin-top:2.5rem;letter-spacing:.05em}
+.footer .copy{
+  font-family:var(--serif-en);font-size:.68rem;letter-spacing:.14em;
+  color:var(--muted);margin-top:2.5rem;text-transform:uppercase;
+}
 .footer .copy span{color:var(--accent)}
 
-/* ===== REVEAL ===== */
-.reveal{opacity:0;transform:translateY(2.5rem);filter:blur(8px);transition:opacity .9s var(--ease-expo),transform .9s var(--ease-expo),filter .9s var(--ease-expo)}
-.reveal.in{opacity:1;transform:none;filter:blur(0)}
-.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}.d5{transition-delay:.4s}
+/* —— Ink strokes (inline SVG) —— */
+.ink-stroke{fill:none;stroke:var(--ink);stroke-linecap:round;stroke-linejoin:round}
+.ink-fill{fill:var(--ink)}
+.accent-stroke{stroke:var(--accent)}
+.accent-fill{fill:var(--accent)}
 
-/* ===== RESPONSIVE ===== */
-@media(max-width:880px){
-  .hero{padding:9rem 0 5rem}
-  .hero-grid{grid-template-columns:1fr;gap:3rem;align-items:start}
-  .report-grid{grid-template-columns:1fr}
+/* —— Reveal —— */
+.reveal{opacity:0;transform:translateY(1.5rem);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+/* —— Responsive —— */
+@media(max-width:820px){
+  .hero-grid,.lenses,.report-grid{grid-template-columns:1fr}
+  .hero-visual{order:-1;max-width:320px;margin:0 auto}
+  .lens-split{grid-template-columns:1fr;gap:1.5rem}
   .phases{grid-template-columns:repeat(2,1fr)}
   .phases .phase:last-child{grid-column:span 2}
+  .nav-links a:not(.nav-cta){display:none}
 }
-@media(max-width:640px){
-  .wrap{padding:0 1.25rem}
-  .section{padding:5rem 0}
-  .nav{gap:.85rem;padding:.5rem .55rem .5rem 1.1rem;top:.85rem;font-size:.7rem}
-  .nav-brand{font-size:.7rem}
-  .nav-cta{font-size:.68rem;padding:.4rem .75rem}
-  .bento-lenses,.bento-flags{grid-template-columns:1fr}
-  .lens-1,.lens-2,.flag,.flag.wide{grid-column:span 1}
-  .lens-2 .split{grid-template-columns:1fr;gap:1.25rem}
+@media(max-width:520px){
   .phases{grid-template-columns:1fr}
   .phases .phase:last-child{grid-column:span 1}
+  .flag{grid-template-columns:2rem 1fr;gap:1rem}
   .footer-inner{flex-direction:column;text-align:center}
 }
 </style>
 </head>
 <body>
 
-<div class="grain"></div>
-
-<!-- ===== NAV ===== -->
 <nav class="nav">
-  <span class="nav-brand">roast-my-pi</span>
-  <a href="#lenses">三条标准</a>
-  <a href="#flags">避坑指南</a>
-  <a href="#report">锐评示例</a>
-  <a href="#start" class="nav-cta">开始评估 <span class="ddot"></span></a>
+  <div class="nav-inner">
+    <span class="nav-brand">墨白 · Advisor X-Ray</span>
+    <div class="nav-links">
+      <a href="#lenses">三条标准</a>
+      <a href="#flags">避坑指南</a>
+      <a href="#report">锐评示例</a>
+      <a href="#start" class="nav-cta">开始评估</a>
+    </div>
+  </div>
 </nav>
 
-<!-- ===== HERO ===== -->
 <header class="hero wrap">
   <div class="hero-grid">
     <div class="reveal">
-      <div class="eyebrow">导师锐评 · ADVISOR X-RAY</div>
-      <h1>选错导师，<em>毁掉五年。</em></h1>
+      <div class="eyebrow">导师锐评</div>
+      <h1>选错导师，<span class="accent">毁掉五年。</span></h1>
       <p class="en">One wrong advisor, five years gone.</p>
-      <a href="#start" class="cta">开始评估 <span class="nest">↗</span></a>
+      <a href="#start" class="cta">开始评估 →</a>
     </div>
-
-    <!-- signature ratio visual -->
-    <div class="ratio-card reveal d2">
-      <div class="rc-label">独立性比率 · 独立 PI 门槛 0.30</div>
-      <div class="rc-num">0.18</div>
-      <div class="rc-sub">示例导师 · 团队挂件，非独立 PI</div>
-      <div class="rc-bar">
-        <div class="fill" style="width:18%"></div>
-        <div class="mark" style="left:15%"></div>
-        <div class="mark" style="left:30%"></div>
-      </div>
-      <div class="rc-scale">
-        <span>0.15 挂件</span>
-        <span>0.30 门槛</span>
-        <span>1.0</span>
-      </div>
+    <div class="hero-visual reveal d1">
+      <svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="署名位置决定真实贡献">
+        <defs>
+          <filter id="bleed" x="-10%" y="-10%" width="120%" height="120%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" result="n"/>
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="0.8"/>
+          </filter>
+        </defs>
+        <!-- author position track -->
+        <text x="40" y="52" font-family="Cormorant Garamond, serif" font-size="11" letter-spacing="3" fill="#5c574f">AUTHOR POSITION</text>
+        <line class="ink-stroke" x1="40" y1="200" x2="380" y2="200" stroke-width="1.2" opacity="0.35"/>
+        <!-- ticks 2-27 faint -->
+        <g class="ink-stroke" stroke-width="1" opacity="0.2">
+          <line x1="72" y1="200" x2="72" y2="194"/><line x1="96" y1="200" x2="96" y2="194"/>
+          <line x1="120" y1="200" x2="120" y2="194"/><line x1="144" y1="200" x2="144" y2="194"/>
+          <line x1="168" y1="200" x2="168" y2="194"/><line x1="192" y1="200" x2="192" y2="194"/>
+          <line x1="216" y1="200" x2="216" y2="194"/><line x1="240" y1="200" x2="240" y2="194"/>
+          <line x1="264" y1="200" x2="264" y2="194"/><line x1="288" y1="200" x2="288" y2="194"/>
+          <line x1="312" y1="200" x2="312" y2="194"/><line x1="336" y1="200" x2="336" y2="194"/>
+        </g>
+        <!-- position 1: bold ink -->
+        <path class="ink-stroke" stroke-width="3.5" filter="url(#bleed)"
+          d="M40 200 L40 130" opacity="0.9"/>
+        <text x="40" y="222" font-family="Cormorant Garamond, serif" font-size="12" fill="#1a1814" text-anchor="middle">1st</text>
+        <text x="40" y="100" font-family="Noto Serif SC, serif" font-size="11" fill="#5c574f" text-anchor="middle">真本事</text>
+        <!-- position 28: broken faint + accent -->
+        <path class="ink-stroke" stroke-width="1.5" stroke-dasharray="3 5"
+          d="M376 200 L376 145" opacity="0.4"/>
+        <circle class="accent-fill" cx="376" cy="168" r="14" fill="none" stroke="#8b3a3a" stroke-width="1.2" opacity="0.7"/>
+        <line class="accent-stroke" x1="362" y1="168" x2="354" y2="168" stroke-width="1"/>
+        <line class="accent-stroke" x1="390" y1="168" x2="398" y2="168" stroke-width="1"/>
+        <text x="376" y="222" font-family="Cormorant Garamond, serif" font-size="12" fill="#8b3a3a" text-anchor="middle">28th</text>
+        <text x="376" y="128" font-family="Noto Serif SC, serif" font-size="11" fill="#8b3a3a" text-anchor="middle">递样本</text>
+        <!-- independence ratio sketch -->
+        <text x="40" y="262" font-family="Cormorant Garamond, serif" font-size="11" letter-spacing="2" fill="#5c574f">INDEPENDENCE 0.18 / 0.30</text>
+        <line x1="40" y1="275" x2="200" y2="275" stroke="rgba(26,24,20,0.12)" stroke-width="1"/>
+        <line x1="40" y1="275" x2="72" y2="275" stroke="#8b3a3a" stroke-width="2" opacity="0.6"/>
+        <line x1="120" y1="270" x2="120" y2="280" stroke="#1a1814" stroke-width="1" opacity="0.3"/>
+        <text x="120" y="292" font-family="Cormorant Garamond, serif" font-size="9" fill="#5c574f" text-anchor="middle">门槛</text>
+      </svg>
     </div>
   </div>
 </header>
 
-<!-- ===== PULL QUOTE BAND ===== -->
 <section class="band wrap reveal">
-  <q>Nature <em>一作</em>，不等于 Nature <em>第 28 作者</em>。<br>署名位置、基金归属、合作权力结构——这三件事，决定一个导师是真 PI，还是团队挂件。</q>
-  <div class="cite">— roast-my-pi · core principle</div>
+  <q>Nature <span class="accent">一作</span>，不等于 Nature <span class="accent">第 28 作者</span>。<br>署名位置、基金归属、合作权力结构——决定真 PI，还是团队挂件。</q>
+  <div class="cite">data over reputation</div>
 </section>
 
-<!-- ===== THREE LENSES (bento) ===== -->
 <section class="section wrap" id="lenses">
   <div class="section-head reveal">
-    <div class="eyebrow">THE THREE LENSES</div>
-    <h2 class="h2">三条标准，<em>看清真假 PI。</em></h2>
+    <div class="eyebrow">三条标准</div>
+    <h2 class="h2">看清<span class="accent">真假 PI。</span></h2>
     <p class="lede">发表文章谁都可以列。但署名位置、基金归属、合作权力结构——这三件事才决定一个人是真 PI，还是团队挂件。</p>
   </div>
-
-  <div class="bento-lenses">
-    <div class="bezel lens-1 reveal d1">
-      <div class="core">
-        <div>
-          <div class="metric-xl">0.30<sup>+</sup></div>
-          <div class="lens-title" style="margin-top:1rem">独立性比率</div>
-          <div class="lens-hint">加权评分 ÷ 论文总数。一作与通讯各 +1.0，中间作者 +0。低于 0.15 基本不是独立 PI——这是整个评估的骨架指标。</div>
-        </div>
-        <div class="rc-bar" style="margin-top:1.5rem">
-          <div class="fill" style="width:30%;opacity:.5"></div>
-          <div class="mark" style="left:15%"></div>
-          <div class="mark" style="left:30%"></div>
-        </div>
+  <div class="lenses">
+    <div class="lens reveal">
+      <div class="lens-num">0.30<sup>+</sup></div>
+      <div class="lens-title">独立性比率</div>
+      <div class="lens-hint">加权评分 ÷ 论文总数。一作与通讯各 +1.0，中间作者 +0。低于 0.15 基本不是独立 PI——这是整个评估的骨架指标。</div>
+      <div class="lens-bar">
+        <div class="fill" style="width:30%"></div>
+        <div class="mark" style="left:15%"></div>
+        <div class="mark" style="left:30%"></div>
       </div>
     </div>
-
-    <div class="bezel lens-2 reveal d2">
-      <div class="core">
-        <div class="split">
-          <div>
-            <div class="metric-md">面上</div>
-            <div class="st">基金归属</div>
-            <div class="sh">青年项目只是起点。没拿过面上项目（~55 万），大概率不是独立研究者。基金号出现在别人通讯论文的致谢里 = 蹭的。</div>
-          </div>
-          <div>
-            <div class="metric-md">Boss</div>
-            <div class="st">合作权力结构</div>
-            <div class="sh">通讯作者标记才是真 PI。长期固定跟 Boss 合作且始终中间位置 = 从未独立。不带 Boss 的独立发文才是真正信号。</div>
-          </div>
+    <div class="lens reveal d1">
+      <div class="lens-split">
+        <div>
+          <div class="metric">面上</div>
+          <div class="lens-title">基金归属</div>
+          <div class="lens-hint">青年项目只是起点。没拿过面上项目，大概率不是独立研究者。</div>
+        </div>
+        <div>
+          <div class="metric">Boss</div>
+          <div class="lens-title">合作权力结构</div>
+          <div class="lens-hint">通讯作者标记才是真 PI。不带 Boss 的独立发文才是真正信号。</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== 6 RED FLAGS (bento) ===== -->
 <section class="section wrap" id="flags">
   <div class="section-head reveal">
-    <div class="eyebrow">RED FLAGS</div>
-    <h2 class="h2">6 条识破<em>注水导师。</em></h2>
+    <div class="eyebrow">避坑指南</div>
+    <h2 class="h2">6 条识破<span class="accent">注水导师。</span></h2>
     <p class="lede">每一条都能截图单发。读完这六条，你永远不会再被花哨简历唬住。</p>
   </div>
-
-  <div class="bento-flags">
-    <div class="ecard flag wide reveal">
+  <div class="flags">
+    <div class="flag reveal">
       <div class="fnum">01</div>
-      <h3>看作者位置，<em>不是期刊影响因子</em></h3>
-      <p>Nature 一作 ≠ Nature 第 28 作者。第 20+ 作者通常只递了点样本——署名位置才是真实贡献度。盯住一作和通讯论文的数量与质量。</p>
+      <div>
+        <h3>看作者位置，<span class="accent">不是期刊影响因子</span></h3>
+        <p>Nature 一作 ≠ Nature 第 28 作者。第 20+ 作者通常只递了点样本——署名位置才是真实贡献度。</p>
+      </div>
     </div>
-    <div class="ecard flag reveal d1">
+    <div class="flag reveal d1">
       <div class="fnum">02</div>
-      <h3>比率 &lt; 0.15 = <em>挂件</em></h3>
-      <p>一作 +1.0，通讯 +1.0，中间作者 +0。加权得分除以总数，低于 0.15 就是螺丝钉。</p>
+      <div>
+        <h3>比率 &lt; 0.15 = <span class="accent">挂件</span></h3>
+        <p>一作 +1.0，通讯 +1.0，中间作者 +0。加权得分除以总数，低于 0.15 就是螺丝钉。</p>
+      </div>
     </div>
-    <div class="ecard flag reveal d2">
+    <div class="flag reveal">
       <div class="fnum">03</div>
-      <h3>通讯作者<em>才是真 PI</em></h3>
-      <p>末位没通讯标记？可能只是挂名。"末位 + 通讯标记"才是确认 PI 身份的金标准。</p>
+      <div>
+        <h3>通讯作者<span class="accent">才是真 PI</span></h3>
+        <p>末位没通讯标记？可能只是挂名。"末位 + 通讯标记"才是确认 PI 身份的金标准。</p>
+      </div>
     </div>
-    <div class="ecard flag reveal d1">
+    <div class="flag reveal d1">
       <div class="fnum">04</div>
-      <h3>致谢基金号 <em>≠ 他的基金</em></h3>
-      <p>搜所有用了该基金号的论文。若全是别人通讯，说明他只是蹭的。</p>
+      <div>
+        <h3>致谢基金号 <span class="accent">≠ 他的基金</span></h3>
+        <p>搜所有用了该基金号的论文。若全是别人通讯，说明他只是蹭的。</p>
+      </div>
     </div>
-    <div class="ecard flag reveal d2">
+    <div class="flag reveal">
       <div class="fnum">05</div>
-      <h3>只有青年基金 = <em>万年主治</em></h3>
-      <p>面上项目才是独立 PI 的门槛。发了多年论文却从未拿过面上，大概率停在主治级。</p>
+      <div>
+        <h3>只有青年基金 = <span class="accent">万年主治</span></h3>
+        <p>面上项目才是独立 PI 的门槛。发了多年论文却从未拿过面上，大概率停在主治级。</p>
+      </div>
     </div>
-    <div class="ecard flag wide reveal d3">
+    <div class="flag reveal d2">
       <div class="fnum">06</div>
-      <h3>跟同一个 Boss 八年还在中间位置，<em>就是天花板。</em></h3>
-      <p>长期固定合作却始终中间位置 → 从未发展独立方向。独立性的轨迹比当下状态更重要：在上升，还是已经停滞？</p>
+      <div>
+        <h3>跟同一个 Boss 八年还在中间位置，<span class="accent">就是天花板。</span></h3>
+        <p>长期固定合作却始终中间位置 → 从未发展独立方向。独立性的轨迹比当下状态更重要。</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ===== SAMPLE REPORT + QUICK START ===== -->
 <section class="section wrap" id="report">
   <div class="section-head reveal">
-    <div class="eyebrow">SAMPLE OUTPUT</div>
-    <h2 class="h2">一份<em>锐评示例。</em></h2>
+    <div class="eyebrow">锐评示例</div>
+    <h2 class="h2">一份<span class="accent">数据报告。</span></h2>
     <p class="lede">合成案例——基于真实评估模式虚构，所有数据为演示用，不代表任何真实个人。</p>
   </div>
-
   <div class="report-grid">
-    <div class="bezel reveal">
-      <div class="core report">
-        <div class="verdict">⚠ 团队挂件 · 非独立 PI</div>
-        <div class="ind">独立性比率 <em>0.18</em></div>
-        <div class="ind-sub">独立 PI 门槛为 0.30 · 机构：某高校附属医院</div>
-        <div class="rows">
-          <div class="row"><span>一作 / 通讯</span><span class="v">~10–15%</span></div>
-          <div class="row"><span>中间作者</span><span class="v">~80%</span></div>
-          <div class="row"><span>NSFC 面上项目</span><span class="v">无</span></div>
-          <div class="row"><span>独立发文（无 Boss）</span><span class="v">几乎没有</span></div>
-        </div>
-        <div class="quote">该研究者长期作为大牛团队的核心中间作者，发表了大量高 IF 论文，但几乎从不担任一作或通讯。基金仅有青年项目，从未获得面上项目。<strong>不具备独立指导博士生的条件。</strong></div>
+    <div class="report reveal">
+      <div class="verdict">团队挂件 · 非独立 PI</div>
+      <div class="ind">独立性比率 <span class="accent">0.18</span></div>
+      <div class="ind-sub">独立 PI 门槛为 0.30 · 机构：某高校附属医院</div>
+      <div class="rows">
+        <div class="row"><span>一作 / 通讯</span><span class="v">~10–15%</span></div>
+        <div class="row"><span>中间作者</span><span class="v">~80%</span></div>
+        <div class="row"><span>NSFC 面上项目</span><span class="v">无</span></div>
+        <div class="row"><span>独立发文（无 Boss）</span><span class="v">几乎没有</span></div>
       </div>
+      <div class="quote">该研究者长期作为大牛团队的核心中间作者，发表了大量高 IF 论文，但几乎从不担任一作或通讯。基金仅有青年项目，从未获得面上项目。<strong>不具备独立指导博士生的条件。</strong></div>
     </div>
-
-    <div class="ecard qs reveal d2" id="start">
+    <div class="qs reveal d1" id="start">
       <h4>快速开始</h4>
       <div class="codeblock">skill_view(<span>name='advisor-insight'</span>)</div>
-      <div style="font-size:.75rem;color:var(--muted);margin-bottom:.75rem;font-family:var(--mono);letter-spacing:.05em">需要准备 —</div>
+      <div class="req">需要准备 —</div>
       <ul>
         <li>导师全名（中英文）+ 别名</li>
         <li>当前机构 + 科室</li>
@@ -406,43 +454,41 @@ body{
         <li>已知合作者或学生</li>
         <li>研究方向关键词</li>
       </ul>
-      <div class="warn">⚠ 仅提供名字无法评估，至少需机构 + 科室</div>
+      <div class="warn">仅提供名字无法评估，至少需机构 + 科室</div>
     </div>
   </div>
 </section>
 
-<!-- ===== HOW IT WORKS ===== -->
 <section class="section wrap">
   <div class="section-head reveal">
-    <div class="eyebrow">PIPELINE</div>
-    <h2 class="h2">工作<em>原理。</em></h2>
+    <div class="eyebrow">工作原理</div>
+    <h2 class="h2">五阶段<span class="accent">评估管线。</span></h2>
   </div>
   <div class="phases">
-    <div class="ecard phase reveal"><div class="tag">PHASE 0</div><div class="nm">消歧</div><div class="wh">跨 PubMed / ORCID / Scholar / 机构官网交叉验证身份</div></div>
-    <div class="ecard phase reveal d1"><div class="tag">PHASE 1</div><div class="nm">发文审计</div><div class="wh">逐篇分类署名角色，计算独立性比率</div></div>
-    <div class="ecard phase reveal d2"><div class="tag">PHASE 2</div><div class="nm">基金分析</div><div class="wh">解析致谢基金号，交叉验证真正归属</div></div>
-    <div class="ecard phase reveal d3"><div class="tag">PHASE 3</div><div class="nm">合作网络</div><div class="wh">统计合作频次，绘制权力结构</div></div>
-    <div class="ecard phase reveal d4"><div class="tag">PHASE 4–5</div><div class="nm">轨迹 + 评分</div><div class="wh">重建职业轨迹，标准化评分与结论</div></div>
+    <div class="phase reveal"><span class="tag">PHASE 0</span><div class="nm">消歧</div><div class="wh">跨 PubMed / ORCID / Scholar 交叉验证身份</div></div>
+    <div class="phase reveal d1"><span class="tag">PHASE 1</span><div class="nm">发文审计</div><div class="wh">逐篇分类署名角色，计算独立性比率</div></div>
+    <div class="phase reveal"><span class="tag">PHASE 2</span><div class="nm">基金分析</div><div class="wh">解析致谢基金号，交叉验证真正归属</div></div>
+    <div class="phase reveal d1"><span class="tag">PHASE 3</span><div class="nm">合作网络</div><div class="wh">统计合作频次，绘制权力结构</div></div>
+    <div class="phase reveal d2"><span class="tag">PHASE 4–5</span><div class="nm">轨迹 + 评分</div><div class="wh">重建职业轨迹，标准化评分与结论</div></div>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
 <footer class="footer">
   <div class="wrap footer-inner">
     <div class="brand">roast-my-pi · 导师锐评</div>
     <div class="links">
       <a href="https://github.com/Nigmat-future/hermes-agent-skills">GitHub</a>
       <a href="https://github.com/Nigmat-future/hermes-agent-skills/blob/main/README.md">README</a>
-      <a href="https://github.com/Nigmat-future/hermes-agent-skills/blob/main/LICENSE">MIT License</a>
+      <a href="https://github.com/Nigmat-future/hermes-agent-skills/blob/main/LICENSE">MIT</a>
     </div>
   </div>
-  <div class="wrap copy">data over reputation <span>·</span> evidence over rhetoric <span>·</span> MIT</div>
+  <div class="wrap copy">evidence over rhetoric <span>·</span> MIT</div>
 </footer>
 
 <script>
-const io = new IntersectionObserver((es)=>{
-  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+const io=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
 </body>
