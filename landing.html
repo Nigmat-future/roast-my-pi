@@ -10,12 +10,10 @@
 <style>
 :root{
   --paper:#f4efe6;
-  --paper-deep:#ebe4d8;
   --ink:#1a1814;
   --muted:#5c574f;
   --rule:rgba(26,24,20,0.12);
   --accent:#8b3a3a;
-  --accent-soft:rgba(139,58,58,0.08);
   --accent-green:#4a5d52;
   --serif-en:"Cormorant Garamond",Georgia,serif;
   --serif-zh:"Noto Serif SC","Songti SC",serif;
@@ -26,29 +24,28 @@ body{
   font-family:var(--serif-zh);background:var(--paper);color:var(--ink);
   line-height:1.7;overflow-x:hidden;min-height:100dvh;
 }
+body[data-lang="en"]{font-family:var(--serif-en)}
 body::before{
   content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
 }
-
 .wrap{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 clamp(1.25rem,4vw,2.5rem)}
 .section{padding:clamp(4.5rem,10vw,8rem) 0}
 
-/* —— Nav —— */
 .nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
-  background:rgba(244,239,230,0.92);
-  border-bottom:1px solid var(--rule);
+  background:rgba(244,239,230,0.92);border-bottom:1px solid var(--rule);
 }
 .nav-inner{
   max-width:1080px;margin:0 auto;padding:.9rem clamp(1.25rem,4vw,2.5rem);
-  display:flex;align-items:center;justify-content:space-between;gap:1.5rem;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
 }
 .nav-brand{
   font-family:var(--serif-en);font-size:.82rem;letter-spacing:.22em;
   text-transform:uppercase;color:var(--muted);
 }
-.nav-links{display:flex;align-items:center;gap:clamp(1rem,3vw,2rem);font-size:.82rem}
+.nav-right{display:flex;align-items:center;gap:clamp(.75rem,2vw,1.5rem)}
+.nav-links{display:flex;align-items:center;gap:clamp(.75rem,2vw,1.5rem);font-size:.82rem}
 .nav-links a{color:var(--muted);text-decoration:none;letter-spacing:.06em;transition:color .3s}
 .nav-links a:hover{color:var(--ink)}
 .nav-cta{
@@ -56,8 +53,18 @@ body::before{
   letter-spacing:.1em;transition:background .3s,color .3s;
 }
 .nav-cta:hover{background:var(--ink);color:var(--paper)!important}
+.lang-switch{
+  display:flex;align-items:center;gap:0;font-family:var(--serif-en);font-size:.75rem;
+  letter-spacing:.08em;border:1px solid var(--rule);
+}
+.lang-switch button{
+  background:transparent;border:none;padding:.35rem .6rem;cursor:pointer;
+  color:var(--muted);transition:color .3s,background .3s;font-family:inherit;
+  font-size:inherit;letter-spacing:inherit;
+}
+.lang-switch button.active{background:var(--ink);color:var(--paper)}
+.lang-switch button:not(.active):hover{color:var(--ink)}
 
-/* —— Hero —— */
 .hero{padding:clamp(7rem,14vw,11rem) 0 clamp(4rem,8vw,6rem)}
 .hero-grid{
   display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,5rem);align-items:center;
@@ -68,11 +75,13 @@ body::before{
 }
 .eyebrow::before{content:"— ";color:var(--accent)}
 .hero h1{
-  font-family:var(--serif-zh);font-size:clamp(2.4rem,6.5vw,4.5rem);
-  font-weight:500;line-height:1.18;letter-spacing:.04em;max-width:8em;
+  font-size:clamp(2.4rem,6.5vw,4.5rem);font-weight:500;
+  line-height:1.18;letter-spacing:.04em;max-width:9em;
 }
+body[data-lang="zh"] .hero h1{font-family:var(--serif-zh)}
+body[data-lang="en"] .hero h1{font-family:var(--serif-en);letter-spacing:-.01em;max-width:10em}
 .hero h1 .accent{color:var(--accent)}
-.hero .en{
+.hero .sub{
   font-family:var(--serif-en);font-style:italic;font-weight:400;
   font-size:clamp(1.1rem,2.5vw,1.45rem);color:var(--muted);
   margin-top:1.75rem;letter-spacing:.02em;
@@ -84,45 +93,34 @@ body::before{
   transition:color .3s,border-color .3s;
 }
 .hero .cta:hover{color:var(--accent);border-color:var(--accent)}
-
-.hero-visual{
-  display:flex;align-items:center;justify-content:center;
-  padding:clamp(1rem,3vw,2rem) 0;
-}
+.hero-visual{display:flex;align-items:center;justify-content:center;padding:clamp(1rem,3vw,2rem) 0}
 .hero-visual svg{width:100%;max-width:420px;height:auto}
 
-/* —— Band —— */
 .band{
   padding:clamp(3.5rem,8vw,5.5rem) 0;
-  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
-  text-align:center;
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);text-align:center;
 }
 .band q{
-  font-family:var(--serif-zh);font-size:clamp(1.2rem,3vw,1.85rem);
-  font-weight:400;line-height:1.65;letter-spacing:.03em;
-  display:block;max-width:28em;margin:0 auto;
+  font-size:clamp(1.2rem,3vw,1.85rem);font-weight:400;
+  line-height:1.65;letter-spacing:.03em;display:block;max-width:28em;margin:0 auto;
 }
+body[data-lang="zh"] .band q{font-family:var(--serif-zh)}
+body[data-lang="en"] .band q{font-family:var(--serif-en);max-width:22em}
 .band q .accent{color:var(--accent)}
 .band .cite{
   font-family:var(--serif-en);font-size:.7rem;letter-spacing:.24em;
   text-transform:uppercase;color:var(--muted);margin-top:2rem;
 }
 
-/* —— Section heads —— */
 .section-head{max-width:36em;margin-bottom:clamp(2.5rem,6vw,4rem)}
-.h2{
-  font-family:var(--serif-zh);font-size:clamp(1.75rem,4vw,2.75rem);
-  font-weight:500;line-height:1.25;letter-spacing:.03em;
-}
+.h2{font-size:clamp(1.75rem,4vw,2.75rem);font-weight:500;line-height:1.25;letter-spacing:.03em}
+body[data-lang="zh"] .h2{font-family:var(--serif-zh)}
+body[data-lang="en"] .h2{font-family:var(--serif-en);letter-spacing:-.01em}
 .h2 .accent{color:var(--accent)}
 .lede{color:var(--muted);font-size:.95rem;margin-top:1.25rem;line-height:1.8;letter-spacing:.02em}
 
-/* —— Lenses —— */
 .lenses{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(1.5rem,4vw,3rem)}
-.lens{
-  padding:clamp(1.75rem,4vw,2.5rem) 0;
-  border-top:1px solid var(--rule);
-}
+.lens{padding:clamp(1.75rem,4vw,2.5rem) 0;border-top:1px solid var(--rule)}
 .lens-num{
   font-family:var(--serif-en);font-size:clamp(3.5rem,8vw,5rem);
   font-weight:400;line-height:1;letter-spacing:-.03em;color:var(--accent);
@@ -131,35 +129,24 @@ body::before{
 .lens-title{font-weight:500;font-size:1rem;margin:.75rem 0 .35rem;letter-spacing:.04em}
 .lens-hint{font-size:.82rem;color:var(--muted);line-height:1.75;max-width:28em}
 .lens-split{display:grid;grid-template-columns:1fr 1fr;gap:2rem;padding-top:1rem}
-.lens-split .metric{
-  font-family:var(--serif-en);font-size:2rem;color:var(--accent-green);
-  margin-bottom:.35rem;
-}
-.lens-bar{
-  position:relative;height:1px;background:var(--rule);margin-top:2rem;
-}
+.lens-split .metric{font-family:var(--serif-en);font-size:2rem;color:var(--accent-green);margin-bottom:.35rem}
+.lens-bar{position:relative;height:1px;background:var(--rule);margin-top:2rem}
 .lens-bar .fill{position:absolute;top:0;left:0;height:100%;background:var(--accent);opacity:.45}
 .lens-bar .mark{position:absolute;top:-5px;width:1px;height:11px;background:var(--ink);opacity:.3}
 
-/* —— Flags —— */
-.flags{display:flex;flex-direction:column;gap:0}
+.flags{display:flex;flex-direction:column}
 .flag{
   display:grid;grid-template-columns:3rem 1fr;gap:1.5rem;
   padding:2rem 0;border-top:1px solid var(--rule);align-items:start;
 }
 .flag:last-child{border-bottom:1px solid var(--rule)}
-.flag .fnum{
-  font-family:var(--serif-en);font-size:.85rem;letter-spacing:.12em;color:var(--accent);
-  padding-top:.15rem;
-}
-.flag h3{
-  font-family:var(--serif-zh);font-weight:500;font-size:1.1rem;
-  line-height:1.4;letter-spacing:.03em;margin-bottom:.4rem;
-}
+.flag .fnum{font-family:var(--serif-en);font-size:.85rem;letter-spacing:.12em;color:var(--accent);padding-top:.15rem}
+.flag h3{font-weight:500;font-size:1.1rem;line-height:1.4;letter-spacing:.03em;margin-bottom:.4rem}
+body[data-lang="zh"] .flag h3{font-family:var(--serif-zh)}
+body[data-lang="en"] .flag h3{font-family:var(--serif-en)}
 .flag h3 .accent{color:var(--accent)}
 .flag p{font-size:.82rem;color:var(--muted);line-height:1.75;max-width:42em}
 
-/* —— Report —— */
 .report-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(2rem,5vw,4rem);align-items:start}
 .report{padding-top:1rem;border-top:1px solid var(--rule)}
 .verdict{
@@ -174,22 +161,20 @@ body::before{
 .ind-sub{font-size:.8rem;color:var(--muted);margin:1rem 0 2rem;letter-spacing:.04em}
 .rows .row{
   display:flex;justify-content:space-between;align-items:baseline;
-  padding:.75rem 0;border-bottom:1px solid var(--rule);font-size:.85rem;
+  padding:.75rem 0;border-bottom:1px solid var(--rule);font-size:.85rem;gap:1rem;
 }
 .rows .row:last-child{border-bottom:0}
-.rows .row .v{font-family:var(--serif-en);color:var(--accent);font-size:.82rem}
+.rows .row .v{font-family:var(--serif-en);color:var(--accent);font-size:.82rem;white-space:nowrap}
 .quote{
-  margin-top:2rem;padding-left:1.25rem;
-  border-left:2px solid var(--accent);
+  margin-top:2rem;padding-left:1.25rem;border-left:2px solid var(--accent);
   font-size:.85rem;line-height:1.8;color:var(--muted);
 }
 .quote strong{color:var(--ink);font-weight:500}
 
 .qs{padding-top:1rem;border-top:1px solid var(--rule)}
-.qs h4{
-  font-family:var(--serif-zh);font-weight:500;font-size:1.1rem;
-  margin-bottom:1.25rem;letter-spacing:.04em;
-}
+.qs h4{font-weight:500;font-size:1.1rem;margin-bottom:1.25rem;letter-spacing:.04em}
+body[data-lang="zh"] .qs h4{font-family:var(--serif-zh)}
+body[data-lang="en"] .qs h4{font-family:var(--serif-en)}
 .codeblock{
   font-family:ui-monospace,monospace;font-size:.75rem;
   background:var(--ink);color:var(--paper);
@@ -205,52 +190,29 @@ body::before{
 .qs li::before{content:"·";position:absolute;left:0;color:var(--accent)}
 .qs .warn{margin-top:1.25rem;font-size:.75rem;color:var(--accent);letter-spacing:.04em}
 
-/* —— Phases —— */
-.phases{
-  display:grid;grid-template-columns:repeat(5,1fr);
-  gap:clamp(1rem,3vw,1.5rem);
-}
+.phases{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(1rem,3vw,1.5rem)}
 .phase{padding:1.5rem 0;border-top:1px solid var(--rule)}
-.phase .tag{
-  font-family:var(--serif-en);font-size:.62rem;letter-spacing:.18em;
-  color:var(--accent);margin-bottom:.75rem;display:block;
-}
+.phase .tag{font-family:var(--serif-en);font-size:.62rem;letter-spacing:.18em;color:var(--accent);margin-bottom:.75rem;display:block}
 .phase .nm{font-weight:500;font-size:.95rem;margin-bottom:.3rem;letter-spacing:.03em}
 .phase .wh{font-size:.75rem;color:var(--muted);line-height:1.65}
 
-/* —— Footer —— */
-.footer{
-  padding:clamp(3rem,6vw,5rem) 0 clamp(2.5rem,5vw,4rem);
-  border-top:1px solid var(--rule);
-}
-.footer-inner{
-  display:flex;justify-content:space-between;align-items:center;
-  flex-wrap:wrap;gap:1.5rem;
-}
-.footer .brand{
-  font-family:var(--serif-en);font-style:italic;font-size:1.15rem;color:var(--muted);
-}
+.footer{padding:clamp(3rem,6vw,5rem) 0 clamp(2.5rem,5vw,4rem);border-top:1px solid var(--rule)}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
+.footer .brand{font-family:var(--serif-en);font-style:italic;font-size:1.15rem;color:var(--muted)}
 .footer .links{display:flex;gap:2rem}
 .footer a{color:var(--muted);text-decoration:none;font-size:.8rem;letter-spacing:.04em;transition:color .3s}
 .footer a:hover{color:var(--ink)}
-.footer .copy{
-  font-family:var(--serif-en);font-size:.68rem;letter-spacing:.14em;
-  color:var(--muted);margin-top:2.5rem;text-transform:uppercase;
-}
+.footer .copy{font-family:var(--serif-en);font-size:.68rem;letter-spacing:.14em;color:var(--muted);margin-top:2.5rem;text-transform:uppercase}
 .footer .copy span{color:var(--accent)}
 
-/* —— Ink strokes (inline SVG) —— */
 .ink-stroke{fill:none;stroke:var(--ink);stroke-linecap:round;stroke-linejoin:round}
-.ink-fill{fill:var(--ink)}
 .accent-stroke{stroke:var(--accent)}
 .accent-fill{fill:var(--accent)}
 
-/* —— Reveal —— */
 .reveal{opacity:0;transform:translateY(1.5rem);transition:opacity .8s ease,transform .8s ease}
 .reveal.in{opacity:1;transform:none}
-.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}
 
-/* —— Responsive —— */
 @media(max-width:820px){
   .hero-grid,.lenses,.report-grid{grid-template-columns:1fr}
   .hero-visual{order:-1;max-width:320px;margin:0 auto}
@@ -267,16 +229,22 @@ body::before{
 }
 </style>
 </head>
-<body>
+<body data-lang="zh">
 
 <nav class="nav">
   <div class="nav-inner">
     <span class="nav-brand">墨白 · Advisor X-Ray</span>
-    <div class="nav-links">
-      <a href="#lenses">三条标准</a>
-      <a href="#flags">避坑指南</a>
-      <a href="#report">锐评示例</a>
-      <a href="#start" class="nav-cta">开始评估</a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="#lenses" data-i18n="nav.lenses"></a>
+        <a href="#flags" data-i18n="nav.flags"></a>
+        <a href="#report" data-i18n="nav.report"></a>
+        <a href="#start" class="nav-cta" data-i18n="nav.cta"></a>
+      </div>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" class="active" data-lang="zh" aria-pressed="true">中文</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
     </div>
   </div>
 </nav>
@@ -284,23 +252,21 @@ body::before{
 <header class="hero wrap">
   <div class="hero-grid">
     <div class="reveal">
-      <div class="eyebrow">导师锐评</div>
-      <h1>选错导师，<span class="accent">毁掉五年。</span></h1>
-      <p class="en">One wrong advisor, five years gone.</p>
-      <a href="#start" class="cta">开始评估 →</a>
+      <div class="eyebrow" data-i18n="hero.eyebrow"></div>
+      <h1 data-i18n-html="hero.title"></h1>
+      <p class="sub" data-i18n="hero.sub"></p>
+      <a href="#start" class="cta" data-i18n="hero.cta"></a>
     </div>
     <div class="hero-visual reveal d1">
-      <svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="署名位置决定真实贡献">
+      <svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Author position determines real contribution">
         <defs>
           <filter id="bleed" x="-10%" y="-10%" width="120%" height="120%">
             <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" result="n"/>
             <feDisplacementMap in="SourceGraphic" in2="n" scale="0.8"/>
           </filter>
         </defs>
-        <!-- author position track -->
         <text x="40" y="52" font-family="Cormorant Garamond, serif" font-size="11" letter-spacing="3" fill="#5c574f">AUTHOR POSITION</text>
         <line class="ink-stroke" x1="40" y1="200" x2="380" y2="200" stroke-width="1.2" opacity="0.35"/>
-        <!-- ticks 2-27 faint -->
         <g class="ink-stroke" stroke-width="1" opacity="0.2">
           <line x1="72" y1="200" x2="72" y2="194"/><line x1="96" y1="200" x2="96" y2="194"/>
           <line x1="120" y1="200" x2="120" y2="194"/><line x1="144" y1="200" x2="144" y2="194"/>
@@ -309,46 +275,41 @@ body::before{
           <line x1="264" y1="200" x2="264" y2="194"/><line x1="288" y1="200" x2="288" y2="194"/>
           <line x1="312" y1="200" x2="312" y2="194"/><line x1="336" y1="200" x2="336" y2="194"/>
         </g>
-        <!-- position 1: bold ink -->
-        <path class="ink-stroke" stroke-width="3.5" filter="url(#bleed)"
-          d="M40 200 L40 130" opacity="0.9"/>
+        <path class="ink-stroke" stroke-width="3.5" filter="url(#bleed)" d="M40 200 L40 130" opacity="0.9"/>
         <text x="40" y="222" font-family="Cormorant Garamond, serif" font-size="12" fill="#1a1814" text-anchor="middle">1st</text>
-        <text x="40" y="100" font-family="Noto Serif SC, serif" font-size="11" fill="#5c574f" text-anchor="middle">真本事</text>
-        <!-- position 28: broken faint + accent -->
-        <path class="ink-stroke" stroke-width="1.5" stroke-dasharray="3 5"
-          d="M376 200 L376 145" opacity="0.4"/>
+        <text id="svg-pos1" x="40" y="100" font-size="11" fill="#5c574f" text-anchor="middle">真本事</text>
+        <path class="ink-stroke" stroke-width="1.5" stroke-dasharray="3 5" d="M376 200 L376 145" opacity="0.4"/>
         <circle class="accent-fill" cx="376" cy="168" r="14" fill="none" stroke="#8b3a3a" stroke-width="1.2" opacity="0.7"/>
         <line class="accent-stroke" x1="362" y1="168" x2="354" y2="168" stroke-width="1"/>
         <line class="accent-stroke" x1="390" y1="168" x2="398" y2="168" stroke-width="1"/>
         <text x="376" y="222" font-family="Cormorant Garamond, serif" font-size="12" fill="#8b3a3a" text-anchor="middle">28th</text>
-        <text x="376" y="128" font-family="Noto Serif SC, serif" font-size="11" fill="#8b3a3a" text-anchor="middle">递样本</text>
-        <!-- independence ratio sketch -->
+        <text id="svg-pos28" x="376" y="128" font-size="11" fill="#8b3a3a" text-anchor="middle">递样本</text>
         <text x="40" y="262" font-family="Cormorant Garamond, serif" font-size="11" letter-spacing="2" fill="#5c574f">INDEPENDENCE 0.18 / 0.30</text>
         <line x1="40" y1="275" x2="200" y2="275" stroke="rgba(26,24,20,0.12)" stroke-width="1"/>
         <line x1="40" y1="275" x2="72" y2="275" stroke="#8b3a3a" stroke-width="2" opacity="0.6"/>
         <line x1="120" y1="270" x2="120" y2="280" stroke="#1a1814" stroke-width="1" opacity="0.3"/>
-        <text x="120" y="292" font-family="Cormorant Garamond, serif" font-size="9" fill="#5c574f" text-anchor="middle">门槛</text>
+        <text id="svg-threshold" x="120" y="292" font-family="Cormorant Garamond, serif" font-size="9" fill="#5c574f" text-anchor="middle">门槛</text>
       </svg>
     </div>
   </div>
 </header>
 
 <section class="band wrap reveal">
-  <q>Nature <span class="accent">一作</span>，不等于 Nature <span class="accent">第 28 作者</span>。<br>署名位置、基金归属、合作权力结构——决定真 PI，还是团队挂件。</q>
-  <div class="cite">data over reputation</div>
+  <q data-i18n-html="band.quote"></q>
+  <div class="cite" data-i18n="band.cite"></div>
 </section>
 
 <section class="section wrap" id="lenses">
   <div class="section-head reveal">
-    <div class="eyebrow">三条标准</div>
-    <h2 class="h2">看清<span class="accent">真假 PI。</span></h2>
-    <p class="lede">发表文章谁都可以列。但署名位置、基金归属、合作权力结构——这三件事才决定一个人是真 PI，还是团队挂件。</p>
+    <div class="eyebrow" data-i18n="lenses.eyebrow"></div>
+    <h2 class="h2" data-i18n-html="lenses.title"></h2>
+    <p class="lede" data-i18n="lenses.lede"></p>
   </div>
   <div class="lenses">
     <div class="lens reveal">
       <div class="lens-num">0.30<sup>+</sup></div>
-      <div class="lens-title">独立性比率</div>
-      <div class="lens-hint">加权评分 ÷ 论文总数。一作与通讯各 +1.0，中间作者 +0。低于 0.15 基本不是独立 PI——这是整个评估的骨架指标。</div>
+      <div class="lens-title" data-i18n="lenses.ratio.title"></div>
+      <div class="lens-hint" data-i18n="lenses.ratio.hint"></div>
       <div class="lens-bar">
         <div class="fill" style="width:30%"></div>
         <div class="mark" style="left:15%"></div>
@@ -358,14 +319,14 @@ body::before{
     <div class="lens reveal d1">
       <div class="lens-split">
         <div>
-          <div class="metric">面上</div>
-          <div class="lens-title">基金归属</div>
-          <div class="lens-hint">青年项目只是起点。没拿过面上项目，大概率不是独立研究者。</div>
+          <div class="metric" data-i18n="lenses.funding.metric"></div>
+          <div class="lens-title" data-i18n="lenses.funding.title"></div>
+          <div class="lens-hint" data-i18n="lenses.funding.hint"></div>
         </div>
         <div>
           <div class="metric">Boss</div>
-          <div class="lens-title">合作权力结构</div>
-          <div class="lens-hint">通讯作者标记才是真 PI。不带 Boss 的独立发文才是真正信号。</div>
+          <div class="lens-title" data-i18n="lenses.power.title"></div>
+          <div class="lens-hint" data-i18n="lenses.power.hint"></div>
         </div>
       </div>
     </div>
@@ -374,122 +335,271 @@ body::before{
 
 <section class="section wrap" id="flags">
   <div class="section-head reveal">
-    <div class="eyebrow">避坑指南</div>
-    <h2 class="h2">6 条识破<span class="accent">注水导师。</span></h2>
-    <p class="lede">每一条都能截图单发。读完这六条，你永远不会再被花哨简历唬住。</p>
+    <div class="eyebrow" data-i18n="flags.eyebrow"></div>
+    <h2 class="h2" data-i18n-html="flags.title"></h2>
+    <p class="lede" data-i18n="flags.lede"></p>
   </div>
-  <div class="flags">
-    <div class="flag reveal">
-      <div class="fnum">01</div>
-      <div>
-        <h3>看作者位置，<span class="accent">不是期刊影响因子</span></h3>
-        <p>Nature 一作 ≠ Nature 第 28 作者。第 20+ 作者通常只递了点样本——署名位置才是真实贡献度。</p>
-      </div>
-    </div>
-    <div class="flag reveal d1">
-      <div class="fnum">02</div>
-      <div>
-        <h3>比率 &lt; 0.15 = <span class="accent">挂件</span></h3>
-        <p>一作 +1.0，通讯 +1.0，中间作者 +0。加权得分除以总数，低于 0.15 就是螺丝钉。</p>
-      </div>
-    </div>
-    <div class="flag reveal">
-      <div class="fnum">03</div>
-      <div>
-        <h3>通讯作者<span class="accent">才是真 PI</span></h3>
-        <p>末位没通讯标记？可能只是挂名。"末位 + 通讯标记"才是确认 PI 身份的金标准。</p>
-      </div>
-    </div>
-    <div class="flag reveal d1">
-      <div class="fnum">04</div>
-      <div>
-        <h3>致谢基金号 <span class="accent">≠ 他的基金</span></h3>
-        <p>搜所有用了该基金号的论文。若全是别人通讯，说明他只是蹭的。</p>
-      </div>
-    </div>
-    <div class="flag reveal">
-      <div class="fnum">05</div>
-      <div>
-        <h3>只有青年基金 = <span class="accent">万年主治</span></h3>
-        <p>面上项目才是独立 PI 的门槛。发了多年论文却从未拿过面上，大概率停在主治级。</p>
-      </div>
-    </div>
-    <div class="flag reveal d2">
-      <div class="fnum">06</div>
-      <div>
-        <h3>跟同一个 Boss 八年还在中间位置，<span class="accent">就是天花板。</span></h3>
-        <p>长期固定合作却始终中间位置 → 从未发展独立方向。独立性的轨迹比当下状态更重要。</p>
-      </div>
-    </div>
-  </div>
+  <div class="flags" id="flags-list"></div>
 </section>
 
 <section class="section wrap" id="report">
   <div class="section-head reveal">
-    <div class="eyebrow">锐评示例</div>
-    <h2 class="h2">一份<span class="accent">数据报告。</span></h2>
-    <p class="lede">合成案例——基于真实评估模式虚构，所有数据为演示用，不代表任何真实个人。</p>
+    <div class="eyebrow" data-i18n="report.eyebrow"></div>
+    <h2 class="h2" data-i18n-html="report.title"></h2>
+    <p class="lede" data-i18n="report.lede"></p>
   </div>
   <div class="report-grid">
     <div class="report reveal">
-      <div class="verdict">团队挂件 · 非独立 PI</div>
-      <div class="ind">独立性比率 <span class="accent">0.18</span></div>
-      <div class="ind-sub">独立 PI 门槛为 0.30 · 机构：某高校附属医院</div>
-      <div class="rows">
-        <div class="row"><span>一作 / 通讯</span><span class="v">~10–15%</span></div>
-        <div class="row"><span>中间作者</span><span class="v">~80%</span></div>
-        <div class="row"><span>NSFC 面上项目</span><span class="v">无</span></div>
-        <div class="row"><span>独立发文（无 Boss）</span><span class="v">几乎没有</span></div>
-      </div>
-      <div class="quote">该研究者长期作为大牛团队的核心中间作者，发表了大量高 IF 论文，但几乎从不担任一作或通讯。基金仅有青年项目，从未获得面上项目。<strong>不具备独立指导博士生的条件。</strong></div>
+      <div class="verdict" data-i18n="report.verdict"></div>
+      <div class="ind" data-i18n-html="report.ind"></div>
+      <div class="ind-sub" data-i18n="report.indSub"></div>
+      <div class="rows" id="report-rows"></div>
+      <div class="quote" data-i18n-html="report.quote"></div>
     </div>
     <div class="qs reveal d1" id="start">
-      <h4>快速开始</h4>
+      <h4 data-i18n="start.title"></h4>
       <div class="codeblock">skill_view(<span>name='advisor-insight'</span>)</div>
-      <div class="req">需要准备 —</div>
-      <ul>
-        <li>导师全名（中英文）+ 别名</li>
-        <li>当前机构 + 科室</li>
-        <li>ORCID（如有，金标准）</li>
-        <li>已知合作者或学生</li>
-        <li>研究方向关键词</li>
-      </ul>
-      <div class="warn">仅提供名字无法评估，至少需机构 + 科室</div>
+      <div class="req" data-i18n="start.req"></div>
+      <ul id="start-list"></ul>
+      <div class="warn" data-i18n="start.warn"></div>
     </div>
   </div>
 </section>
 
 <section class="section wrap">
   <div class="section-head reveal">
-    <div class="eyebrow">工作原理</div>
-    <h2 class="h2">五阶段<span class="accent">评估管线。</span></h2>
+    <div class="eyebrow" data-i18n="pipeline.eyebrow"></div>
+    <h2 class="h2" data-i18n-html="pipeline.title"></h2>
   </div>
-  <div class="phases">
-    <div class="phase reveal"><span class="tag">PHASE 0</span><div class="nm">消歧</div><div class="wh">跨 PubMed / ORCID / Scholar 交叉验证身份</div></div>
-    <div class="phase reveal d1"><span class="tag">PHASE 1</span><div class="nm">发文审计</div><div class="wh">逐篇分类署名角色，计算独立性比率</div></div>
-    <div class="phase reveal"><span class="tag">PHASE 2</span><div class="nm">基金分析</div><div class="wh">解析致谢基金号，交叉验证真正归属</div></div>
-    <div class="phase reveal d1"><span class="tag">PHASE 3</span><div class="nm">合作网络</div><div class="wh">统计合作频次，绘制权力结构</div></div>
-    <div class="phase reveal d2"><span class="tag">PHASE 4–5</span><div class="nm">轨迹 + 评分</div><div class="wh">重建职业轨迹，标准化评分与结论</div></div>
-  </div>
+  <div class="phases" id="phases-list"></div>
 </section>
 
 <footer class="footer">
   <div class="wrap footer-inner">
-    <div class="brand">roast-my-pi · 导师锐评</div>
+    <div class="brand" data-i18n="footer.brand"></div>
     <div class="links">
       <a href="https://github.com/Nigmat-future/hermes-agent-skills">GitHub</a>
       <a href="https://github.com/Nigmat-future/hermes-agent-skills/blob/main/README.md">README</a>
       <a href="https://github.com/Nigmat-future/hermes-agent-skills/blob/main/LICENSE">MIT</a>
     </div>
   </div>
-  <div class="wrap copy">evidence over rhetoric <span>·</span> MIT</div>
+  <div class="wrap copy" data-i18n="footer.copy"></div>
 </footer>
 
 <script>
-const io=new IntersectionObserver(es=>{
-  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
-},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const I18N = {
+  zh: {
+    title: "导师锐评 · roast-my-pi",
+    nav: { lenses: "三条标准", flags: "避坑指南", report: "锐评示例", cta: "开始评估" },
+    hero: {
+      eyebrow: "导师锐评",
+      title: '选错导师，<span class="accent">毁掉五年。</span>',
+      sub: "One wrong advisor, five years gone.",
+      cta: "开始评估 →"
+    },
+    band: {
+      quote: 'Nature <span class="accent">一作</span>，不等于 Nature <span class="accent">第 28 作者</span>。<br>署名位置、基金归属、合作权力结构——决定真 PI，还是团队挂件。',
+      cite: "data over reputation"
+    },
+    lenses: {
+      eyebrow: "三条标准",
+      title: '看清<span class="accent">真假 PI。</span>',
+      lede: "发表文章谁都可以列。但署名位置、基金归属、合作权力结构——这三件事才决定一个人是真 PI，还是团队挂件。",
+      ratio: { title: "独立性比率", hint: "加权评分 ÷ 论文总数。一作与通讯各 +1.0，中间作者 +0。低于 0.15 基本不是独立 PI——这是整个评估的骨架指标。" },
+      funding: { metric: "面上", title: "基金归属", hint: "青年项目只是起点。没拿过面上项目，大概率不是独立研究者。" },
+      power: { title: "合作权力结构", hint: "通讯作者标记才是真 PI。不带 Boss 的独立发文才是真正信号。" }
+    },
+    flags: {
+      eyebrow: "避坑指南",
+      title: '6 条识破<span class="accent">注水导师。</span>',
+      lede: "每一条都能截图单发。读完这六条，你永远不会再被花哨简历唬住。",
+      items: [
+        { title: '看作者位置，<span class="accent">不是期刊影响因子</span>', body: "Nature 一作 ≠ Nature 第 28 作者。第 20+ 作者通常只递了点样本——署名位置才是真实贡献度。" },
+        { title: '比率 &lt; 0.15 = <span class="accent">挂件</span>', body: "一作 +1.0，通讯 +1.0，中间作者 +0。加权得分除以总数，低于 0.15 就是螺丝钉。" },
+        { title: '通讯作者<span class="accent">才是真 PI</span>', body: '末位没通讯标记？可能只是挂名。"末位 + 通讯标记"才是确认 PI 身份的金标准。' },
+        { title: '致谢基金号 <span class="accent">≠ 他的基金</span>', body: "搜所有用了该基金号的论文。若全是别人通讯，说明他只是蹭的。" },
+        { title: '只有青年基金 = <span class="accent">万年主治</span>', body: "面上项目才是独立 PI 的门槛。发了多年论文却从未拿过面上，大概率停在主治级。" },
+        { title: '跟同一个 Boss 八年还在中间位置，<span class="accent">就是天花板。</span>', body: "长期固定合作却始终中间位置 → 从未发展独立方向。独立性的轨迹比当下状态更重要。" }
+      ]
+    },
+    report: {
+      eyebrow: "锐评示例",
+      title: '一份<span class="accent">数据报告。</span>',
+      lede: "合成案例——基于真实评估模式虚构，所有数据为演示用，不代表任何真实个人。",
+      verdict: "团队挂件 · 非独立 PI",
+      ind: '独立性比率 <span class="accent">0.18</span>',
+      indSub: "独立 PI 门槛为 0.30 · 机构：某高校附属医院",
+      rows: [
+        ["一作 / 通讯", "~10–15%"],
+        ["中间作者", "~80%"],
+        ["NSFC 面上项目", "无"],
+        ["独立发文（无 Boss）", "几乎没有"]
+      ],
+      quote: "该研究者长期作为大牛团队的核心中间作者，发表了大量高 IF 论文，但几乎从不担任一作或通讯。基金仅有青年项目，从未获得面上项目。<strong>不具备独立指导博士生的条件。</strong>"
+    },
+    start: {
+      title: "快速开始",
+      req: "需要准备 —",
+      items: ["导师全名（中英文）+ 别名", "当前机构 + 科室", "ORCID（如有，金标准）", "已知合作者或学生", "研究方向关键词"],
+      warn: "仅提供名字无法评估，至少需机构 + 科室"
+    },
+    pipeline: {
+      eyebrow: "工作原理",
+      title: '五阶段<span class="accent">评估管线。</span>',
+      phases: [
+        { tag: "PHASE 0", name: "消歧", desc: "跨 PubMed / ORCID / Scholar 交叉验证身份" },
+        { tag: "PHASE 1", name: "发文审计", desc: "逐篇分类署名角色，计算独立性比率" },
+        { tag: "PHASE 2", name: "基金分析", desc: "解析致谢基金号，交叉验证真正归属" },
+        { tag: "PHASE 3", name: "合作网络", desc: "统计合作频次，绘制权力结构" },
+        { tag: "PHASE 4–5", name: "轨迹 + 评分", desc: "重建职业轨迹，标准化评分与结论" }
+      ]
+    },
+    footer: { brand: "roast-my-pi · 导师锐评", copy: 'evidence over rhetoric <span>·</span> MIT' },
+    svg: { pos1: "真本事", pos28: "递样本", threshold: "门槛", font: "Noto Serif SC, serif" }
+  },
+  en: {
+    title: "roast-my-pi · Advisor Insight",
+    nav: { lenses: "Three Lenses", flags: "Red Flags", report: "Sample Report", cta: "Start" },
+    hero: {
+      eyebrow: "Advisor Insight",
+      title: 'One wrong advisor, <span class="accent">five years gone.</span>',
+      sub: "A data-driven X-ray of an academic advisor's real contribution.",
+      cta: "Start evaluation →"
+    },
+    band: {
+      quote: 'First author on Nature is not the same as <span class="accent">author #28</span> on Nature.<br>Author position, grant ownership, and co-author power structure — these decide a real PI from a team passenger.',
+      cite: "data over reputation"
+    },
+    lenses: {
+      eyebrow: "Three Lenses",
+      title: 'See through <span class="accent">fake PIs.</span>',
+      lede: "Anyone can be listed on a paper. But author position, grant ownership, and co-author power structure — these three things decide whether someone is a real PI or a team passenger.",
+      ratio: { title: "Independence Ratio", hint: "Weighted score ÷ total papers. First and corresponding authors +1.0 each, middle authors +0. Below 0.15 means not an independent PI — the backbone metric of the entire evaluation." },
+      funding: { metric: "General", title: "Grant Ownership", hint: "Youth grants are just the starting line. Never landing a General Program (~550K CNY) likely means not an independent researcher." },
+      power: { title: "Co-author Power Structure", hint: "The corresponding-author marker is the real PI signal. Papers without the lab head are the true independence signal." }
+    },
+    flags: {
+      eyebrow: "Red Flags",
+      title: '6 ways to spot an <span class="accent">inflated advisor.</span>',
+      lede: "Save these. Screenshot them. You'll never look at a CV the same way again.",
+      items: [
+        { title: 'Author position beats <span class="accent">journal impact factor</span>', body: "First author on Nature ≠ author #28 on Nature. Position 20+ usually means you sent in some samples — author position is the real contribution signal." },
+        { title: 'Ratio &lt; 0.15 = <span class="accent">passenger</span>', body: "First +1.0, corresponding +1.0, middle +0. Weighted score divided by total — below 0.15 means a bench hand, not a lab head." },
+        { title: '<span class="accent">Corresponding author</span> is the real PI', body: 'Last position without a corresponding marker? Probably just a senior name on the door. "Last + corresponding marker" is the gold standard for PI identity.' },
+        { title: 'Grant in acknowledgments <span class="accent">≠ their grant</span>', body: "Pull every paper citing that grant ID. If someone else is always corresponding, they're surfing on someone else's money." },
+        { title: 'Youth grant only = <span class="accent">stuck at attending</span>', body: "The General Program is the minimum bar for calling yourself an independent PI. Years of papers but never a General Program — likely stuck at the same rank." },
+        { title: 'Eight years, same Boss, still middle author — <span class="accent">that\'s the ceiling.</span>', body: "Fixed collaboration but never moving up from the middle of the list → never carved out an independent line. Trajectory matters more than the snapshot." }
+      ]
+    },
+    report: {
+      eyebrow: "Sample Output",
+      title: 'A <span class="accent">data report.</span>',
+      lede: "Synthetic case — built from real evaluation patterns. All data is fictional and does not refer to any actual person.",
+      verdict: "Team dependent · Not an independent PI",
+      ind: 'Independence ratio <span class="accent">0.18</span>',
+      indSub: "Independent PI threshold: 0.30 · Institution: university-affiliated hospital",
+      rows: [
+        ["First / corresponding", "~10–15%"],
+        ["Middle author", "~80%"],
+        ["NSFC General Program", "Never"],
+        ["Papers without the Boss", "Almost zero"]
+      ],
+      quote: "This researcher spent years as the workhorse middle author in a senior PI's lab. Plenty of high-IF papers, but almost never in the driver's seat — rarely first author, almost never corresponding. Youth grant only, never a General Program. <strong>Not someone who can independently mentor a PhD student.</strong>"
+    },
+    start: {
+      title: "Quick Start",
+      req: "You'll need —",
+      items: ["Full name (Chinese + English) and aliases", "Current institution + department", "ORCID if available — the gold standard", "Known collaborators or former students", "Research-area keywords"],
+      warn: "A name alone won't cut it — need at least institution + department"
+    },
+    pipeline: {
+      eyebrow: "How It Works",
+      title: 'Five-phase <span class="accent">evaluation pipeline.</span>',
+      phases: [
+        { tag: "PHASE 0", name: "Disambiguation", desc: "Cross-check PubMed, ORCID, Scholar, and institution pages" },
+        { tag: "PHASE 1", name: "Publication Audit", desc: "Classify each paper by author role, compute independence ratio" },
+        { tag: "PHASE 2", name: "Grant Analysis", desc: "Extract grant IDs from acknowledgments, trace real ownership" },
+        { tag: "PHASE 3", name: "Co-author Network", desc: "Count co-authorships, map the power structure" },
+        { tag: "PHASE 4–5", name: "Trajectory + Score", desc: "Reconstruct career arc, standardized score and verdict" }
+      ]
+    },
+    footer: { brand: "roast-my-pi · Advisor Insight", copy: 'evidence over rhetoric <span>·</span> MIT' },
+    svg: { pos1: "Real work", pos28: "Samples", threshold: "Threshold", font: "Cormorant Garamond, serif" }
+  }
+};
+
+function get(obj, path) {
+  return path.split('.').reduce((o, k) => o?.[k], obj);
+}
+
+function renderLists(lang) {
+  const t = I18N[lang];
+  document.getElementById('flags-list').innerHTML = t.flags.items.map((item, i) => `
+    <div class="flag reveal${i ? ' d' + Math.min(i, 2) : ''}">
+      <div class="fnum">${String(i + 1).padStart(2, '0')}</div>
+      <div><h3>${item.title}</h3><p>${item.body}</p></div>
+    </div>`).join('');
+  document.getElementById('report-rows').innerHTML = t.report.rows.map(([k, v]) =>
+    `<div class="row"><span>${k}</span><span class="v">${v}</span></div>`).join('');
+  document.getElementById('start-list').innerHTML = t.start.items.map(li => `<li>${li}</li>`).join('');
+  document.getElementById('phases-list').innerHTML = t.pipeline.phases.map((p, i) => `
+    <div class="phase reveal${i ? ' d' + Math.min(i, 2) : ''}">
+      <span class="tag">${p.tag}</span>
+      <div class="nm">${p.name}</div>
+      <div class="wh">${p.desc}</div>
+    </div>`).join('');
+}
+
+function applyLang(lang) {
+  const t = I18N[lang];
+  document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+  document.body.dataset.lang = lang;
+  document.title = t.title;
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const val = get(t, el.dataset.i18n);
+    if (val != null) el.textContent = val;
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const val = get(t, el.dataset.i18nHtml);
+    if (val != null) el.innerHTML = val;
+  });
+
+  const svg1 = document.getElementById('svg-pos1');
+  const svg28 = document.getElementById('svg-pos28');
+  const svgTh = document.getElementById('svg-threshold');
+  svg1.textContent = t.svg.pos1;
+  svg1.setAttribute('font-family', t.svg.font);
+  svg28.textContent = t.svg.pos28;
+  svg28.setAttribute('font-family', t.svg.font);
+  svgTh.textContent = t.svg.threshold;
+
+  document.querySelectorAll('.lang-switch button').forEach(btn => {
+    const on = btn.dataset.lang === lang;
+    btn.classList.toggle('active', on);
+    btn.setAttribute('aria-pressed', on);
+  });
+
+  renderLists(lang);
+  localStorage.setItem('landing-lang', lang);
+
+  document.querySelectorAll('.reveal').forEach(el => {
+    el.classList.remove('in');
+    io.observe(el);
+  });
+}
+
+const io = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: .08, rootMargin: '0px 0px -40px 0px' });
+
+const saved = localStorage.getItem('landing-lang');
+const initial = saved || (navigator.language.startsWith('zh') ? 'zh' : 'en');
+applyLang(initial);
+
+document.querySelectorAll('.lang-switch button').forEach(btn => {
+  btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+});
 </script>
 </body>
 </html>
